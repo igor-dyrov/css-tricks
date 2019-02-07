@@ -17,7 +17,6 @@ body {
 	grid-column: 1/4;
 	display: grid;
 	grid-template-columns: 1.5fr 2fr 1.3fr;  
-	/*min-width: 1000px;*/
 }
 
 .header__logo {
@@ -93,23 +92,37 @@ body {
 }
 
 .button {
-  width: 7vw;
-  text-align: center;
-  padding-top: 0.5vmin;
-  padding-bottom: 0.5vmin;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 2.5vmin;
-  font-weight: bold;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer;
-  background-color: #C79022;
-  color: #08043A;
-  border: 3px solid #08043A;
-  border-radius: 15px;
+  	width: 7vw;
+  	text-align: center;
+  	padding-top: 0.5vmin;
+	padding-bottom: 0.5vmin;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 2.5vmin;
+	font-weight: bold;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	background-color: #C79022;
+	color: #08043A;
+	border: 3px solid #08043A;
+	border-radius: 15px;
 }
 
 .button:hover {
-  background-color: #08043A;
-  color: #C79022;
+	background-color: #08043A;
+	color: #C79022;
+}
+
+@media only screen and (max-width : 800px) {
+	.header__search {
+		display: none;
+	}
+
+	.header__search__image {
+		height: 7vmin;
+	}
+
+	.header__navigation {
+		grid-column: 2/4;
+	}
 }
