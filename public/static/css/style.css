@@ -5,12 +5,17 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Chettan|Lato');
 
 body {
-    width: 100%;
-    height: 100%;
     margin: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 0.1fr 1fr 0.1fr;
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    height: 100%;
+    width: 100%;
 }
 
 header {
@@ -267,6 +272,7 @@ nav {
         flex-direction: column;
         justify-content: center;
         height: auto;
+        font-size: 8vmin;
     }
 
     .footer__contact__image {
