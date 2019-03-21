@@ -9,7 +9,7 @@ body {
 	height: 100%;
 	margin: 0;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);  
+	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: 0.1fr 1fr 0.1fr;
 }
 
@@ -18,7 +18,7 @@ header {
 	grid-column: 1/4;
     grid-row: 1/2;
 	display: grid;
-	grid-template-columns: 1.5fr 1.8fr 2fr;
+	grid-template-columns: 1.5fr 1.7fr 2.2fr;
 }
 
 main {
@@ -132,7 +132,8 @@ nav {
 	display: flex;
     font-family: 'Baloo Chettan', cursive;
     justify-content: space-evenly;
-	padding: 2vmin;
+	padding-top: 2vmin;
+	padding-right: 2vmin;
 }
 
 .header__navigation__image {
@@ -194,6 +195,10 @@ nav {
 .button:hover {
 	background-color: #08043A;
 	color: #C79022;
+}
+
+.post-block__content {
+    text-align: justify;
 }
 
 @media only screen and (max-width : 870px) {
