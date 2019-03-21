@@ -33,7 +33,7 @@ footer {
     grid-column: 1/4;
     background-image: linear-gradient(90deg, #522580, #1955AF);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 2fr 1fr 2fr;
 }
 
 .footer__menu {
@@ -42,6 +42,7 @@ footer {
     font-family: 'Baloo Chettan', cursive;
     font-weight: bold;
     display: flex;
+    justify-content: space-between;
     height: 100%;
 }
 
@@ -220,8 +221,12 @@ nav {
     }
 
 	.header__logo__image {
-		height: 50px;
+		height: 20vmin;
 	}
+
+    .header__logo__label {
+        font-size: 15vmin;
+    }
 
 	.header__search {
 		display: none;
@@ -242,6 +247,14 @@ nav {
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    .post-block__content {
+        font-size: 4vmin;
+    }
+
+    .post-block__label {
+        font-size: 6vmin;
     }
 
     .footer__menu {
