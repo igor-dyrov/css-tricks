@@ -4,16 +4,25 @@
 @import url('https://fonts.googleapis.com/css?family=Germania+One|Roboto+Mono');
 @import url('https://fonts.googleapis.com/css?family=Baloo+Chettan|Lato');
 
-body {
+/*body {*/
+    /*margin: 0;*/
+    /*display: grid;*/
+    /*grid-template-columns: repeat(3, 1fr);*/
+    /*grid-template-rows: 0.1fr 1fr 0.1fr;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+/*}*/
+
+html, body {
+    height: 100%;
+    width: 100%;
     margin: 0;
+}
+
+.main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 0.1fr 1fr 0.1fr;
-    height: 100%;
-    width: 100%;
-}
-
-html {
     height: 100%;
     width: 100%;
 }
