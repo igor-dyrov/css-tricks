@@ -11,9 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "copy-webpack-plugin": "^5.0.2",
     "express": "^4.16.4",
+    "history": "^4.9.0",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-router": "^5.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
