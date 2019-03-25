@@ -1,0 +1,18 @@
+.button {
+    text-align: center;
+    padding: 1vmin 1.5vmin 1vmin 1.5vmin;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: #C79022;
+    color: #08043A;
+    border: 3px solid #08043A;
+    border-radius: 20px;
+}
+
+.button:hover {
+    background-color: #08043A;
+    color: #C79022;
+}

@@ -1,0 +1,36 @@
+footer {
+    grid-row: 3/4;
+    grid-column: 1/4;
+    background-image: linear-gradient(90deg, #522580, #1955AF);
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+}
+
+.footer__menu {
+    font-size: 32px;
+    grid-column: 1/2;
+    font-family: 'Baloo Chettan', cursive;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.footer__menu__element {
+    padding-top: 2vmin;
+    width: 10vw;
+    text-align: center;
+    cursor: pointer;
+    color: #08043A;
+}
+
+.footer__contact {
+    padding-top: 2vmin;
+    grid-column: 3/4;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer__contact__image {
+    height: 5vmin;
+}
