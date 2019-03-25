@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
-    "wds": "webpack-dev-server --mode development --config webpack.dev.config.js",
-    "build": "webpack --mode production --config webpack.prod.config.js"
+    "wds": "webpack-dev-server --config ./webpack/webpack.dev.config.js",
+    "build": "webpack --config ./webpack/webpack.prod.config.js"
   },
   "author": "",
   "license": "ISC",
