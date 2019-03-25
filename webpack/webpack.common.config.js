@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const sourcePath = path.join(__dirname, '../src/');
 const extractCSS = new ExtractTextPlugin('styles.min.css');
 
@@ -31,6 +32,7 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	plugins: [
+		new HtmlWebpackPlugin({template: 'index.html'}),
 		extractCSS,
 	]
 };
