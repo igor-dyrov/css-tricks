@@ -12,5 +12,5 @@ ReactDOM.render(
 	<Router history={ history }>
 		<App routes={ routes }/>
 	</Router>,
-	document.getElementsByTagName('body')[0]
+	document.getElementById('root')
 );

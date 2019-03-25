@@ -2,7 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const sourcePath = path.join(__dirname, 'src/');
+const extractCSS = new ExtractTextPlugin('styles.min.css');
 
 module.exports = {
 	context: sourcePath,
@@ -18,7 +20,10 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader']
+				use: extractCSS.extract([
+					'css-loader',
+					'postcss-loader'
+				])
 			}
 		]
 	},
@@ -36,9 +41,10 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
+		extractCSS,
 		new CopyWebpackPlugin([{
-			from: 'static',
-			to: 'static'
+			from: 'index.html',
+			to: 'index.html'
 		}])
 	]
 };

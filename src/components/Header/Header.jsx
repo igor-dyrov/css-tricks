@@ -16,7 +16,7 @@ class Header extends React.Component {
 					<div className="header__logo__label">Service</div>
 				</div>
 				<div className="header__search">
-					<Button text='Find'/>
+					<Button className='header__search__button' text='Find'/>
 					<input className="header__search__input"/>
 				</div>
 				<nav>
