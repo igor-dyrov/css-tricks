@@ -2,6 +2,8 @@ import * as React from 'react';
 import Footer from '../../components/Footer/Footer.jsx';
 import Header from '../../components/Header/Header.jsx';
 
+import './Main.css';
+
 const exampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
 ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
@@ -16,7 +18,7 @@ class Main extends React.Component {
 
 	render() {
 		return (
-			<div className={'main'}>
+			<div className='main'>
 				<Header/>
 				<main>
 					<div className="main__label">Why you should cooperate with us?</div>

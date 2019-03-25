@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+import './Header.css';
+import Button from '../Button/Button.jsx';
+
 class Header extends React.Component {
 	constructor(props) {
 		super(props);
@@ -13,7 +16,7 @@ class Header extends React.Component {
 					<div className="header__logo__label">Service</div>
 				</div>
 				<div className="header__search">
-					<div className="button">Find</div>
+					<Button text='Find'/>
 					<input className="header__search__input"/>
 				</div>
 				<nav>
