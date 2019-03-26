@@ -1,22 +1,26 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const sourcePath = path.join(__dirname, 'src/');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const sourcePath = path.join(__dirname, '../src/');
 const extractCSS = new ExtractTextPlugin('styles.min.css');
 
 module.exports = {
 	context: sourcePath,
 	entry: './index.jsx',
-	mode: 'development',
 	module: {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /(node_modules|bower_components|server)/,
 				loader: 'babel-loader',
-				options: { presets: ['@babel/env'] }
+				options: {presets: ['@babel/env']}
+			},
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'eslint-loader'
 			},
 			{
 				test: /\.css$/,
@@ -27,24 +31,13 @@ module.exports = {
 			}
 		]
 	},
-	resolve: { extensions: ['*', '.js', '.jsx'] },
+	resolve: {extensions: ['*', '.js', '.jsx']},
 	output: {
-		path: path.resolve(__dirname, 'dist/'),
-		publicPath: '/dist/',
+		path: path.resolve(__dirname, '../dist/'),
 		filename: 'bundle.js'
 	},
-	devServer: {
-		contentBase: sourcePath,
-		port: 3000,
-		publicPath: 'http://localhost:3000/dist/',
-		hotOnly: true
-	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
+		new HtmlWebpackPlugin({template: 'index.html'}),
 		extractCSS,
-		new CopyWebpackPlugin([{
-			from: 'index.html',
-			to: 'index.html'
-		}])
 	]
 };

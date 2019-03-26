@@ -3,10 +3,10 @@ const app = express();
 
 const path = require('path');
 
-app.use(express.static('../src'));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/src/index.html'));
+	res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 app.listen(4000);
