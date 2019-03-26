@@ -12,6 +12,6 @@ export const PATHS = {
 
 export const routes = (
 	<Switch>
-		<Route exact={true} path={PATHS.MENU} component={Main}/>
+		<Route exact path={PATHS.MENU} component={Main}/>
 	</Switch>
 );

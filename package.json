@@ -8,8 +8,8 @@
     "start": "node server/server.js",
     "wds": "webpack-dev-server --config ./webpack/webpack.dev.config.js",
     "build": "webpack --config ./webpack/webpack.prod.config.js",
-    "lint": "./node_modules/.bin/eslint ./src",
-    "lint-fix": "./node_modules/.bin/eslint --fix ./src"
+    "lint": "./node_modules/.bin/eslint ./src --ext .js --ext .jsx",
+    "lint-fix": "./node_modules/.bin/eslint ./src --ext .js --ext .jsx --fix"
   },
   "author": "",
   "license": "ISC",
