@@ -18,18 +18,12 @@ class Header extends React.Component {
 				<nav>
 					<div className='header__navigation__signIn'>
 						<img src='./static/img/signIn.png' className='header__navigation__image'/>
-Sign In
-					
-					
-					
-</div>
+						Sign In
+					</div>
 					<div className='header__navigation__signUp'>
 						<img src='./static/img/signUp.png' className='header__navigation__image'/>
-Sign Up
-					
-					
-					
-</div>
+						Sign Up
+					</div>
 				</nav>
 			</header>
 		);

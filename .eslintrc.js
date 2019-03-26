@@ -53,6 +53,9 @@ module.exports = {
 		"jsx-a11y/alt-text":[
 			"off"
 		],
+		"react/jsx-one-expression-per-line": [
+			"warn"
+		],
 		"react/forbid-prop-types": [
 			"off"
 		],
