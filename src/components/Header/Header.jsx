@@ -4,10 +4,6 @@ import './Header.css';
 import Button from '../Button/Button.jsx';
 
 class Header extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<header>

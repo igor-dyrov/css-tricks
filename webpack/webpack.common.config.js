@@ -18,6 +18,11 @@ module.exports = {
 				options: {presets: ['@babel/env']}
 			},
 			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: 'eslint-loader'
+			},
+			{
 				test: /\.css$/,
 				use: extractCSS.extract([
 					'css-loader',

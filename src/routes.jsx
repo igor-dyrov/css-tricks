@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router';
 
-import Main from './containers/Main/Main.js';
+import Main from './containers/Main/Main.jsx';
 
 export const PATHS = {
 	MENU: '/',

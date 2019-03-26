@@ -5,9 +5,6 @@ module.exports = {
 	"parserOptions": {
 		"ecmaVersion": 2018,
 		"sourceType": "module",
-		"ecmaFeatures": {
-			"jsx": true
-		}
 
 	},
 	"globals": {
@@ -22,7 +19,6 @@ module.exports = {
 	],
 	"extends": [
 		"airbnb",
-		// "plugin:react/recommended"
 	],
 	"parser": "babel-eslint",
 	"rules": {
@@ -46,6 +42,15 @@ module.exports = {
 			"off"
 		],
 		"react/jsx-indent": [
+			"off"
+		],
+		"react/prefer-stateless-function": [
+			"warn"
+		],
+		"jsx-a11y/alt-text":[
+			"off"
+		],
+		"react/forbid-prop-types": [
 			"off"
 		],
 		"indent": [

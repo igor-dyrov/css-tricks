@@ -11,8 +11,6 @@ ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor i
 velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 culpa qui officia deserunt mollit anim id est laborum.`;
 
-const a = 'kmkmk';
-
 const MainWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -23,10 +21,6 @@ const MainWrapper = styled.div`
 `;
 
 class Main extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<MainWrapper>
