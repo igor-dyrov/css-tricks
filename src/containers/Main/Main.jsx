@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Redirect from 'react-router';
 
 import Footer from '../../components/Footer/Footer.jsx';
 import Header from '../../components/Header/Header.jsx';
@@ -19,7 +20,7 @@ class Main extends React.Component {
 			<ContainerWrapper>
 				<Header/>
 				<main>
-					<div className='main__label'>Why you should cooperate with us?</div>
+					<h1 className='main__label'>Why you should cooperate with us?</h1>
 					<div className='main__posts'>
 						<div className='main__post-block'>
 							<img className='post-block__image' src='static/img/resp.png'/>

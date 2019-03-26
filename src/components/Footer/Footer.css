@@ -33,4 +33,5 @@ footer {
 
 .footer__contact__image {
     height: 5vmin;
+    cursor: pointer;
 }
