@@ -14,6 +14,8 @@ module.exports = merge(common, {
 	devServer: {
 		contentBase: common.context,
 		port: 3000,
+		disableHostCheck: true,
+		historyApiFallback: true,
 		hotOnly: true
 	},
 });

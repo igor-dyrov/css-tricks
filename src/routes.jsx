@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router';
 
 import Main from './containers/Main/Main.jsx';
+import SignIn from './containers/SignIn/SignIn.jsx';
 
 export const PATHS = {
 	MENU: '/',
@@ -13,5 +14,6 @@ export const PATHS = {
 export const routes = (
 	<Switch>
 		<Route exact path={PATHS.MENU} component={Main}/>
+		<Route exact path={PATHS.SIGN_IN} component={SignIn}/>
 	</Switch>
 );
