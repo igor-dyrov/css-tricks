@@ -26,6 +26,7 @@ footer {
 
 .footer__contact {
     padding-top: 2vmin;
+    padding-bottom: 1vmin;
     grid-column: 3/4;
     display: flex;
     justify-content: space-evenly;
@@ -33,4 +34,5 @@ footer {
 
 .footer__contact__image {
     height: 5vmin;
+    cursor: pointer;
 }

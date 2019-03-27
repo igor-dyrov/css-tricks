@@ -9,7 +9,7 @@ class Button extends React.Component {
 		const { text } = this.props;
 
 		return (
-			<div className={`${className} button`}>{ text }</div>
+			<div className={`button ${className}`}>{ text }</div>
 		);
 	}
 }
