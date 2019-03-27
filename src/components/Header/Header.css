@@ -62,17 +62,14 @@ nav {
 }
 
 .header__search__input {
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 10px;
-    -moz-box-shadow: 2px 2px 3px #666;
-    -webkit-box-shadow: 2px 2px 3px #666;
-    box-shadow: 2px 2px 3px #666;
     outline: 0;
-    -webkit-appearance: none;
     border-radius: 20px;
-    font-size: 1vw;
     border: 3px solid #08043A;
+    font-family: 'Baloo Chettan', cursive;
     margin-left: 1vmin;
+    font-size: 2.5vmin;
+    padding-left: 1vmin;
+    width: 50%;
 }
 
 .header__search__button {

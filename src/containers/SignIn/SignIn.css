@@ -49,9 +49,11 @@
     grid-column: 2/3;
     margin-left: 4vmin;
     margin-right: 4vmin;
+    font-family: 'Baloo Chettan', cursive;
+    font-size: 2vmin;
     outline: 0;
     border-radius: 20px;
-    font-size: 1vw;
+    /*font-size: 1vw;*/
     border: 4px solid #08043A;
 }
 
