@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Redirect from 'react-router';
 
 import Footer from '../../components/Footer/Footer.jsx';
 import Header from '../../components/Header/Header.jsx';
