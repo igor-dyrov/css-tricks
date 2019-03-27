@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { Redirect } from 'react-router';
-import { withRouter } from 'react-router-dom';
 
 import './Header.css';
 import history from '../../middleware/history/history.js';
@@ -26,26 +24,13 @@ class Header extends React.Component {
 		}
 	}
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			needRedirect: false,
-			redirectTo: ''
-		};
-	}
-
 	render() {
-		const { needRedirect } = this.state;
-		const { redirectTo } = this.state;
-
 		return (
 			<header>
-				{needRedirect ? <Redirect to={redirectTo}/> : (
-					<div className='header__logo'>
-						<img src='./static/img/service.png' className='header__logo__image'/>
-						<div className='header__logo__label' onClick={Header.logoOnClick}>Service</div>
-					</div>
-				)}
+				<div className='header__logo'>
+					<img src='./static/img/service.png' className='header__logo__image'/>
+					<div className='header__logo__label' onClick={Header.logoOnClick}>Service</div>
+				</div>
 				<div className='header__search'>
 					<Button className='header__search__button' text='Find'/>
 					<input className='header__search__input'/>
