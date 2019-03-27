@@ -11,3 +11,4 @@
 ## Launch
 1. npm i
 2. npm run wds
+3. check localhost:3000
