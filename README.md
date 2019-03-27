@@ -1,6 +1,6 @@
-#Simple modern web project
+# Simple modern web project
 ![Preview](./img/preview.png "Подпись")
-##Technology stack
+## Technology stack
 * HTML/CSS/JavaScript
 * React
 * Redux
@@ -8,6 +8,6 @@
 * NodeJS
 * mongoDB
 * SCSS
-##Launch
+## Launch
 1. npm i
 2. npm run wds
