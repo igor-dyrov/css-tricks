@@ -9,6 +9,20 @@ import './SignIn.css';
 import './Mobile.css';
 
 class SignIn extends React.Component {
+	static validateInput(name) {
+
+	}
+
+	constructor(props) {
+		super(props);
+		this._loginValidator = SignIn.validateInput.bind({}, 'login');
+		this._passwordValidator = SignIn.validateInput.bind({}, 'password');
+	}
+
+	onSubmit() {
+
+	}
+
 	render() {
 		return (
 			<ContainerWrapper>
@@ -18,12 +32,18 @@ class SignIn extends React.Component {
 						<h1 className='signIn-block__label'>Sign In</h1>
 						<div className='signIn-block__form'>
 							<div className='signIn-block__form__row'>
-								<div className='signIn-block__form__row__label'>Login</div>
-								<input className='signIn-block__form__row__input'/>
+								<p className='signIn-block__form__error'>Login must be at most 20 symbols long</p>
 							</div>
 							<div className='signIn-block__form__row'>
-								<div className='signIn-block__form__row__label'>Password</div>
-								<input className='signIn-block__form__row__input' type='password'/>
+								<div className='signIn-block__form__label'>Login</div>
+								<input className='signIn-block__form__input' name='login'/>
+							</div>
+							<div className='signIn-block__form__row'>
+								<p className='signIn-block__form__error'>Password must be at least 8 symbols long</p>
+							</div>
+							<div className='signIn-block__form__row'>
+								<div className='signIn-block__form__label'>Password</div>
+								<input className='signIn-block__form__input' type='password' name='password'/>
 							</div>
 							<div className='signIn-block__form__buttons'>
 								<Button className='signIn-block__button' text='Log In'/>

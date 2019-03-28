@@ -10,7 +10,7 @@
         margin-bottom: 5vmin;
     }
 
-    .signIn-block__form__row__label {
+    .signIn-block__form__label {
         font-size: 7vmin;
     }
 
@@ -27,9 +27,11 @@
         font-size: 12vmin;
     }
 
-    .signIn-block__form__row__input {
+    .signIn-block__form__input {
         font-size: 3.5vmin;
         width: 85%;
-        /*margin-right: 0.5vmin;*/
+    }
+    .signIn-block__form__error {
+        font-size: 5vmin;
     }
 }
