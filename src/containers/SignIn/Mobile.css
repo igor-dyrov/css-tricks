@@ -10,11 +10,11 @@
         margin-bottom: 5vmin;
     }
 
-    .signIn-block__form__label {
+    .signIn-block__for-label {
         font-size: 7vmin;
     }
 
-    .signIn-block__form__row {
+    .signIn-block__form-row {
         grid-template-columns: 1fr 1fr;
     }
 
@@ -27,11 +27,11 @@
         font-size: 12vmin;
     }
 
-    .signIn-block__form__input {
+    .signIn-block__form-input {
         font-size: 3.5vmin;
         width: 85%;
     }
-    .signIn-block__form__error {
+    .signIn-block__form-error {
         font-size: 5vmin;
     }
 }
