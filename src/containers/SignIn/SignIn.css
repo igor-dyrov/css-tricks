@@ -30,12 +30,12 @@
     justify-content: space-around;
 }
 
-.signIn-block__form__row {
+.signIn-block__form-row {
     display: grid;
     grid-template-columns: 1fr 0.5fr;
 }
 
-.signIn-block__form__row__label {
+.signIn-block__form-label {
     text-align: left;
     padding-left: 4vmin;
     grid-column: 1/2;
@@ -45,7 +45,7 @@
     color: #08043A;
 }
 
-.signIn-block__form__row__input {
+.signIn-block__form-input {
     grid-column: 2/3;
     margin-left: 4vmin;
     margin-right: 4vmin;
@@ -53,11 +53,12 @@
     font-size: 2vmin;
     outline: 0;
     border-radius: 20px;
-    /*font-size: 1vw;*/
     border: 4px solid #08043A;
+    padding-left: 1vmin;
 }
 
-.signIn-block__form__buttons {
+.signIn-block__form-buttons {
+    margin-top: 2vmin;
     display: flex;
     justify-content: center;
 }
@@ -75,4 +76,23 @@
 .signIn-block__button:hover {
     background-color: #522580;
     color: #C79022;
+}
+
+.disabled {
+    background-color: grey;
+    cursor: default;
+}
+
+.disabled:hover {
+    background-color: grey;
+    color: #C79022;
+}
+
+.signIn-block__form-error {
+    display: none;
+    text-align: center;
+    grid-column: 1/3;
+    font-family: 'Baloo Chettan', cursive;
+    color: #ff0500;
+    font-size: 2.5vmin;
 }

@@ -65,6 +65,9 @@ module.exports = {
 		"jsx-a11y/no-static-element-interactions": [
 			"off"
 		],
+		"react/jsx-indent-props": [
+			2, 'tab'
+		],
 		"indent": [
 			"warn",
 			"tab"
