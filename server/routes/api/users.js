@@ -26,6 +26,9 @@ router.post('/', auth.optional, (req, res, next) => {
 	const finalUser = new Users(user);
 
 	finalUser.setPassword(user.password);
+	let randomNumber=Math.random().toString();
+	randomNumber=randomNumber.substring(2,randomNumber.length);
+	res.cookie('cookieName',randomNumber, { maxAge: 900000, httpOnly: true });
 
 	return finalUser.save()
 		.then(() => res.json({ user: finalUser.toAuthJSON() }));
