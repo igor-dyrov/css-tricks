@@ -20,7 +20,7 @@ UsersSchema.methods.validatePassword = function(password) {
 	return this.hash === hash;
 };
 
-UsersSchema.methods.generateJWT = () => {
+UsersSchema.methods.generateJWT = function() {
 	const today = new Date();
 	const expirationDate = new Date(today);
 	expirationDate.setDate(today.getDate() + 60);
@@ -32,11 +32,11 @@ UsersSchema.methods.generateJWT = () => {
 	}, 'secret');
 };
 
-UsersSchema.methods.toAuthJSON = () => {
+UsersSchema.methods.toAuthJSON = function() {
 	return {
 		_id: this._id,
 		login: this.login,
-		token: this.generateJWT(),
+		token: UsersSchema.methods.generateJWT(),
 	};
 };
 

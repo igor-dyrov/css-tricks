@@ -7,7 +7,6 @@ const Users = mongoose.model('Users');
 //POST new user route (optional, everyone has access)
 router.post('/', auth.optional, (req, res, next) => {
 	const { body: { user } } = req;
-
 	if(!user.login) {
 		return res.status(422).json({
 			errors: {
@@ -35,7 +34,6 @@ router.post('/', auth.optional, (req, res, next) => {
 //POST login route (optional, everyone has access)
 router.post('/login', auth.optional, (req, res, next) => {
 	const { body: { user } } = req;
-
 	if(!user.login) {
 		return res.status(422).json({
 			errors: {
@@ -59,7 +57,7 @@ router.post('/login', auth.optional, (req, res, next) => {
 
 		if(passportUser) {
 			const user = passportUser;
-			user.token = passportUser.generateJWT();
+			// user.token = passportUser.generateJWT();
 
 			return res.json({ user: user.toAuthJSON() });
 		}

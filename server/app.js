@@ -17,6 +17,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 //Initiate our app
 const app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require('./routes'));
 
 //Configure our app
