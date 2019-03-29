@@ -6,7 +6,6 @@ const errorHandler = require('errorhandler');
 const app = express();
 
 app.use(bodyParser.json());
-app.use(errorHandler());
 
 const MongoClient = require('mongodb').MongoClient;
 
@@ -18,10 +17,6 @@ const RESPONSE_CODES = {
 	NOT_AUTHORIZED: 401,
 	CONFLICT: 409
 };
-
-app.use('/about', (req, res) => {
-	res.send('About this wiki');
-});
 
 app.post('/api/register', (req, res) => {
 	if (!req.body || !req.body.login || !req.body.password) {
@@ -49,7 +44,7 @@ app.post('/api/register', (req, res) => {
 					toInsert.sessionID = md5sum.digest('hex');
 					dbo.collection("sessions").insertOne(toInsert, (err, result) => {
 						if (!err) {
-							res.set('Set-Cookie', toInsert.sessionID);
+							res.set('Set-Cookie', `session_id=${toInsert.sessionID}`);
 							res.status(RESPONSE_CODES.OK);
 							res.json(toInsert);
 						}
@@ -59,6 +54,15 @@ app.post('/api/register', (req, res) => {
 			});
 		});
 	}
+});
+
+app.delete('/api/session', (req, res) => {
+	const date = new Date(Date.now());
+	res.set('Set-Cookie',`${req.get('Cookie')}; Expires=${date.toUTCString()}`);
+	res.status(RESPONSE_CODES.OK);
+	res.json({
+		message: 'cleared'
+	});
 });
 
 app.post('/api/session', (req, res) => { //login
@@ -73,7 +77,7 @@ app.post('/api/session', (req, res) => { //login
 			dbo.collection("sessions").findOne({login: req.body.login, password: req.body.password}, (err, result) => {
 				if (!err && result) {
 					res.status(RESPONSE_CODES.OK);
-					res.set('Set-Cookie', result.sessionID);
+					res.set('Set-Cookie', `session_id=${result.sessionID}`);
 					res.json(result);
 				} else {
 					res.status(RESPONSE_CODES.FORBIDDEN);
@@ -87,14 +91,13 @@ app.post('/api/session', (req, res) => { //login
 });
 
 app.use('/api/session', (req, res) => { //check auth
-	const session = req.get('Cookie');
+	const session = req.get('Cookie').split('=')[1];
 	MongoClient.connect(url, (err, db) => {
 		if (err) throw err;
 		const dbo = db.db("authDB");
 		dbo.collection("sessions").findOne({sessionID: session}, (err, result) => {
 			if (!err && result) {
 				res.status(RESPONSE_CODES.OK);
-				console.log(result);
 				res.json(result);
 			} else {
 				res.status(RESPONSE_CODES.NOT_AUTHORIZED);
@@ -105,5 +108,7 @@ app.use('/api/session', (req, res) => { //check auth
 		});
 	});
 });
+
+const router = express.Router();
 
 app.listen(8000, () => console.log('Server running on http://localhost:8000/'));
