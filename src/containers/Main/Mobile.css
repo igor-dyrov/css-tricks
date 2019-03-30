@@ -17,16 +17,16 @@
         justify-content: center;
     }
 
-    .post-block__image {
+    .post-block-image {
         height: 30vmin;
         width: 30vmin;
     }
 
-    .header__logo__image {
+    .header__logo-image {
         height: 20vmin;
     }
 
-    .header__logo__label {
+    .header__logo-label {
         font-size: 15vmin;
     }
 
@@ -34,7 +34,7 @@
         display: none;
     }
 
-    .header__navigation__image {
+    .header__navigation-image {
         height: 35px;
     }
 

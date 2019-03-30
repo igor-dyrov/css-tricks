@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
 import './Header.css';
 import history from '../../middleware/history/history.js';
@@ -25,29 +26,52 @@ class Header extends React.Component {
 	}
 
 	render() {
+		const { isAuthorized } = this.props;
+
 		return (
 			<header>
 				<div className='header__logo'>
-					<img src='./static/img/service.png' className='header__logo__image'/>
-					<div className='header__logo__label' onClick={Header.logoOnClick}>Service</div>
+					<img src='./static/img/service.png' className='header__logo-image'/>
+					<div className='header__logo-label' onClick={Header.logoOnClick}>Service</div>
 				</div>
 				<div className='header__search'>
-					<Button className='header__search__button' text='Find'/>
-					<input className='header__search__input'/>
+					<Button className='header__search-button' text='Find'/>
+					<input className='header__search-input'/>
 				</div>
-				<nav>
-					<div className='header__navigation__signIn' onClick={Header.signInOnClick}>
-						<img src='./static/img/signIn.png' className='header__navigation__image'/>
-						Sign In
-					</div>
-					<div className='header__navigation__signUp' onClick={Header.signUpOnClick}>
-						<img src='./static/img/signUp.png' className='header__navigation__image'/>
-						Sign Up
-					</div>
-				</nav>
+				{!isAuthorized ? (
+					<nav>
+						<div className='header__navigation-element' onClick={Header.signInOnClick}>
+							<img src='./static/img/signIn.png' className='header__navigation-image'/>
+							<div className='header__navigation-label'>Sign In</div>
+						</div>
+						<div className='header__navigation-element' onClick={Header.signUpOnClick}>
+							<img src='./static/img/signUp.png' className='header__navigation-image'/>
+							<div className='header__navigation-label'>Sign Up</div>
+						</div>
+					</nav>
+				) : (
+					<nav>
+						<div className='header__navigation-element'>
+							<img src='./static/img/user.png' className='header__navigation-image'/>
+							<div className='header__navigation-label'>User</div>
+						</div>
+						<div className='header__navigation-element'>
+							<img src='./static/img/exit.png' className='header__navigation-image'/>
+							<div className='header__navigation-label'>Log Out</div>
+						</div>
+					</nav>
+				)}
 			</header>
 		);
 	}
 }
+
+Header.propTypes = {
+	isAuthorized: PropTypes.bool,
+};
+
+Header.defaultProps = {
+	isAuthorized: false
+};
 
 export default Header;
