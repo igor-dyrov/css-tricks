@@ -68,6 +68,12 @@ module.exports = {
 		"react/jsx-indent-props": [
 			2, 'tab'
 		],
+		"no-prototype-builtins": [
+			"off"
+		],
+		"react/no-unused-state": [
+			"warn"
+		],
 		"indent": [
 			"warn",
 			"tab"

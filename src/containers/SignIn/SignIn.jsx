@@ -14,17 +14,20 @@ class SignIn extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			formIsValid: true,
+			loginIsValid: true,
+			passwordIsValid: true,
+			formIsValid: true
 		};
 		this.inputValidator = this.validateInput.bind(this);
 		this._submitter = this.onSubmit.bind(this);
 	}
 
+	componentDidMount() {
+		this.validateForm();
+	}
+
 	onSubmit() {
-		const inputNames = ['login', 'password'];
-		inputNames.forEach((name) => {
-			document.getElementById(`signIn__${name}-error`).blur();
-		});
+		this.validateForm();
 		const { formIsValid } = this.state;
 		if (formIsValid) {
 			const body = {
@@ -37,22 +40,42 @@ class SignIn extends React.Component {
 		}
 	}
 
+	validateForm() {
+		const inputNames = ['login', 'password'];
+		inputNames.forEach((name) => {
+			document.getElementById(`signIn__${name}`).focus();
+			document.getElementById(`signIn__${name}`).blur();
+		});
+	}
+
+	_setFormStatus(newState) {
+		const log = newState.hasOwnProperty('loginIsValid') ? newState : this.state;
+		const log1 = newState.hasOwnProperty('passwordIsValid') ? newState : this.state;
+		const { loginIsValid } = log;
+		const { passwordIsValid } = log1;
+		this.setState({
+			formIsValid: loginIsValid && passwordIsValid,
+			...newState
+		});
+	}
+
 	validateInput(event) {
-		let isValid = true;
+		let isValid = false;
+		const property = `${event.target.name}IsValid`;
+		const newState = {};
 		if (event.target.value.length) {
 			const error = Validator.validateInput(event.target.name, event.target.value);
 			const errorLabel = document.getElementById(`signIn__${event.target.name}-error`);
 			if (!error) {
 				errorLabel.style.display = 'none';
+				isValid = true;
 			} else {
 				errorLabel.innerText = error;
 				errorLabel.style.display = 'block';
-				isValid = false;
 			}
 		}
-		this.setState({
-			formIsValid: isValid
-		});
+		newState[property] = isValid;
+		this._setFormStatus(newState);
 	}
 
 	render() {

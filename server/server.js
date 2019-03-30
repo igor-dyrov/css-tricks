@@ -66,7 +66,7 @@ app.delete('/api/session', (req, res) => {
 	});
 });
 
-app.options('/api/session', (req, res, next) => {
+app.options('/api/*', (req, res, next) => {
 	res.status(RESPONSE_CODES.OK);
 	res.set('Access-Control-Allow-Origin', '*');
 	res.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
