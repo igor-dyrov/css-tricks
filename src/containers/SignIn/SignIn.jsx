@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header.jsx';
 import Button from '../../components/Button/Button.jsx';
 import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper.js';
 import Validator from '../../modules/Validator.js';
+import UserService from '../../services/UserService/UserService.js';
 
 import './SignIn.css';
 import './Mobile.css';
@@ -16,6 +17,7 @@ class SignIn extends React.Component {
 			formIsValid: true,
 		};
 		this.inputValidator = this.validateInput.bind(this);
+		this._submitter = this.onSubmit.bind(this);
 	}
 
 	onSubmit() {
@@ -23,6 +25,16 @@ class SignIn extends React.Component {
 		inputNames.forEach((name) => {
 			document.getElementById(`signIn__${name}-error`).blur();
 		});
+		const { formIsValid } = this.state;
+		if (formIsValid) {
+			const body = {
+				login: document.getElementById('signIn__login').value,
+				password: document.getElementById('signIn__password').value,
+			};
+			UserService.login(body)
+				.then((response) => response.json())
+				.then((response) => console.log(response));
+		}
 	}
 
 	validateInput(event) {
@@ -60,6 +72,7 @@ class SignIn extends React.Component {
 								<div className='signIn-block__form-label'>Login</div>
 								<input
 									className='signIn-block__form-input'
+									id='signIn__login'
 									name='login'
 									onBlur={this.inputValidator}
 								/>
@@ -71,16 +84,17 @@ class SignIn extends React.Component {
 								<div className='signIn-block__form-label'>Password</div>
 								<input
 									className='signIn-block__form-input'
-									   type='password'
-									   name='password'
-									   onBlur={this.inputValidator}
+									id='signIn__password'
+									type='password'
+									name='password'
+									onBlur={this.inputValidator}
 								/>
 							</div>
 							<div className='signIn-block__form-buttons'>
 								<Button
 									className={`signIn-block__button ${formIsValid ? '' : 'disabled'}`}
 									text='Log In'
-									onClick={this.onSubmit}
+									onClick={this._submitter}
 								/>
 							</div>
 						</div>
