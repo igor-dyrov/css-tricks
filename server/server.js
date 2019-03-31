@@ -19,7 +19,9 @@ const RESPONSE_CODES = {
 	CONFLICT: 409
 };
 
-app.post('/api/register', (req, res) => {
+app.post('/api/register', cors(), (req, res) => {
+	res.set('Access-Control-Allow-Origin', '*');
+	console.log(req.body);
 	if (!req.body || !req.body.login || !req.body.password) {
 		res.status(RESPONSE_CODES.FORBIDDEN);
 		res.json({
