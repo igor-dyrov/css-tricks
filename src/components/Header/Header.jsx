@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import './Header.css';
 import history from '../../middleware/history/history.js';
@@ -24,9 +25,10 @@ class Header extends React.Component {
 			history.push(PATHS.MENU);
 		}
 	}
-
+	
 	render() {
 		const { isAuthorized } = this.props;
+		const { userName } = this.props;
 
 		return (
 			<header>
@@ -53,7 +55,7 @@ class Header extends React.Component {
 					<nav>
 						<div className='header__navigation-element'>
 							<img src='./static/img/user.png' className='header__navigation-image'/>
-							<div className='header__navigation-label'>User</div>
+							<div className='header__navigation-label'>{userName}</div>
 						</div>
 						<div className='header__navigation-element'>
 							<img src='./static/img/exit.png' className='header__navigation-image'/>
@@ -68,10 +70,23 @@ class Header extends React.Component {
 
 Header.propTypes = {
 	isAuthorized: PropTypes.bool,
+	userName: PropTypes.string
 };
 
 Header.defaultProps = {
-	isAuthorized: false
+	isAuthorized: false,
+	userName: 'User'
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+	return {
+		isAuthorized: state.auth.isAuthorized,
+		userName: state.auth.userName,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,7 +1,9 @@
 const merge = require('webpack-merge');
 const webpack = require('webpack');
-const common = require('./webpack.common.config.js');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+
+const common = require('./webpack.common.config.js');
 
 const sourcePath = path.join(__dirname, 'dist/');
 

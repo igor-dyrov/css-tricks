@@ -68,6 +68,12 @@ module.exports = {
 		"react/jsx-indent-props": [
 			2, 'tab'
 		],
+		"arrow-body-style": [
+			"off"
+		],
+		"global-require" : [
+			"off"
+		],
 		"no-prototype-builtins": [
 			"off"
 		],

@@ -1,5 +1,5 @@
 const initialState = {
-	isAuth: false,
+	isAuthorized: false,
 	userName: ''
 };
 
@@ -12,7 +12,7 @@ export function auth(state = initialState, action) {
 	case AuthActionTypes.SetAuthInfo:
 		return {
 			...state,
-			isAuth: action.dat.isAuth,
+			isAuthorized: action.data.isAuthorized,
 			userName: action.data.userName,
 		};
 	default:

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
 import Footer from '../../components/Footer/Footer.jsx';
 import Header from '../../components/Header/Header.jsx';
@@ -6,6 +7,7 @@ import Button from '../../components/Button/Button.jsx';
 import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper.js';
 import Validator from '../../modules/Validator.js';
 import UserService from '../../services/UserService/UserService.js';
+import setAuthInfo from '../../redux/auth/auth.action.js';
 
 import './SignIn.css';
 import './Mobile.css';
@@ -35,7 +37,10 @@ class SignIn extends React.Component {
 				password: document.getElementById('signIn__password').value,
 			};
 			UserService.login(body)
-				.then((response) => response.json())
+				.then((response) => {
+					console.log(response.status);
+					return response.json();
+				})
 				.then((response) => console.log(response));
 		}
 	}
@@ -129,4 +134,16 @@ class SignIn extends React.Component {
 	}
 }
 
-export default SignIn;
+const mapStateToProps = (state) => {
+	return {};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		setAuthData(data) {
+			dispatch(setAuthInfo(data));
+		},
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
