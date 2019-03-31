@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 const MongoClient = require('mongodb').MongoClient;
 
-const url = "mongodb://igor:261097@localhost/";
+const url = "mongodb://localhost:27017";
 
 const RESPONSE_CODES = {
 	OK: 200,
