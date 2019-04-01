@@ -71,7 +71,12 @@ class UserService {
 	}
 
 	logOut() {
-		return this._handleAuthResponse(UserService._sendAuthRequest('DELETE', '/session'));
+		this._clearUserData();
+		return this._handleAuthResponse(UserService._sendAuthRequest('DELETE', '/session'))
+			.then((response) => {
+				this._clearUserData();
+				return response;
+			});
 	}
 }
 

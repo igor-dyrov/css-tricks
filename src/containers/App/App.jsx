@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
-import {Switch} from 'react-router';
+import React, { Component } from 'react';
+import { Switch, withRouter } from 'react-router';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import { withRouter } from "react-router";
+import { connect } from 'react-redux';
 
 import UserService from '../../services/UserService/UserService.js';
 import setAuthInfo from '../../redux/auth/auth.action.js';
@@ -17,7 +16,7 @@ class App extends Component {
 	}
 
 	componentWillMount() {
-		const {setAuthData} = this.props;
+		const { setAuthData } = this.props;
 		this.setLoadingStatus(true);
 		UserService.checkAuth().then((response) => {
 			if (response.ok) {

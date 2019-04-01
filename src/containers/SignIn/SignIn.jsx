@@ -2,6 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import history from '../../middleware/history/history.js';
+import { PATHS } from '../../routes.jsx';
 import Footer from '../../components/Footer/Footer.jsx';
 import Header from '../../components/Header/Header.jsx';
 import Button from '../../components/Button/Button.jsx';
@@ -19,14 +21,27 @@ class SignIn extends React.Component {
 		this.state = {
 			loginIsValid: true,
 			passwordIsValid: true,
-			formIsValid: true
+			formIsValid: true,
 		};
 		this.inputValidator = this.validateInput.bind(this);
 		this._submitter = this.onSubmit.bind(this);
+		this._submitterWithEnter = this.loginWithEnter.bind(this);
+	}
+
+	componentWillMount() {
+		console.log(UserService.isAuth());
+		if (UserService.isAuth()) {
+			history.push(PATHS.MENU);
+		}
+		window.addEventListener('keypress', this._submitterWithEnter);
 	}
 
 	componentDidMount() {
 		this.validateForm();
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('keypress', this._submitterWithEnter);
 	}
 
 	onSubmit() {
@@ -45,6 +60,7 @@ class SignIn extends React.Component {
 							isAuthorized: true,
 							userName: response.data.login
 						});
+						history.push(PATHS.MENU);
 					}
 				});
 		}
@@ -84,6 +100,12 @@ class SignIn extends React.Component {
 		}
 		newState[property] = isValid;
 		this._setFormStatus(newState);
+	}
+
+	loginWithEnter(event) {
+		if (event.keyCode === 13 && event.type === 'keypress') {
+			this.onSubmit();
+		}
 	}
 
 	render() {

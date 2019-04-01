@@ -2,10 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const cors = require('cors');
-const path = require('path');
+const delay = require('express-delay');
 
 const app = express();
-
+// Delay all responses for 1 second
+app.use(delay(1500));
 app.use(bodyParser.json());
 
 const MongoClient = require('mongodb').MongoClient;
@@ -110,8 +111,12 @@ app.post('/api/session', cors(), (req, res) => { //login
 app.use('/api/session', (req, res) => { //check auth
 	res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 	res.set('Access-Control-Allow-Credentials', 'true');
-	console.log(req.get('Cookie'));
-	const session = req.get('Cookie').split('=')[1];
+	const cookie = req.get('Cookie');
+	console.log(cookie);
+	let session;
+	if (cookie) {
+		session = cookie.split('=')[1];
+	}
 	MongoClient.connect(url, (err, db) => {
 		if (err) throw err;
 		const dbo = db.db("authDB");

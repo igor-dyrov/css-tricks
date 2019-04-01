@@ -10,12 +10,6 @@ import setAuthData from '../../redux/auth/auth.action.js';
 import UserService from '../../services/UserService/UserService.js';
 
 class Header extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this._signOutClicker = this.signOutOnClick.bind(this);
-	}
-
 	static signInOnClick() {
 		if (history.location.pathname !== PATHS.SIGN_IN) {
 			history.push(PATHS.SIGN_IN);
@@ -32,6 +26,12 @@ class Header extends React.Component {
 		if (history.location.pathname !== PATHS.MENU) {
 			history.push(PATHS.MENU);
 		}
+	}
+
+	constructor(props) {
+		super(props);
+
+		this._signOutClicker = this.signOutOnClick.bind(this);
 	}
 
 	signOutOnClick() {
@@ -90,12 +90,14 @@ class Header extends React.Component {
 
 Header.propTypes = {
 	isAuthorized: PropTypes.bool,
-	userName: PropTypes.string
+	userName: PropTypes.string,
+	setAuthInfo: PropTypes.func
 };
 
 Header.defaultProps = {
 	isAuthorized: false,
-	userName: 'User'
+	userName: 'User',
+	setAuthInfo: () => {}
 };
 
 const mapStateToProps = (state) => {
