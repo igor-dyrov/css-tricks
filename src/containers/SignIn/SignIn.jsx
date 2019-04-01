@@ -11,7 +11,7 @@ import setAuthInfo from '../../redux/auth/auth.action.js';
 
 import './SignIn.css';
 import './Mobile.css';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 class SignIn extends React.Component {
 	constructor(props) {
@@ -39,20 +39,6 @@ class SignIn extends React.Component {
 				password: document.getElementById('signIn__password').value,
 			};
 			UserService.login(body)
-				.then((response) => {
-					if (response.status) {
-						return response.json()
-							.then((data) => {
-								return {
-									ok: true,
-									data: data,
-								};
-							});
-					}
-					return {
-						ok: false,
-					};
-				})
 				.then((response) => {
 					if (response.ok) {
 						setAuthData({
