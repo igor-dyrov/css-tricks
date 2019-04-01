@@ -1,17 +1,24 @@
-import React, { Component } from 'react';
-import { Switch } from 'react-router';
+import React, {Component} from 'react';
+import {Switch} from 'react-router';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import { withRouter } from "react-router";
 
 import UserService from '../../services/UserService/UserService.js';
 import setAuthInfo from '../../redux/auth/auth.action.js';
-import setLoadingStatus from '../../redux/global/global.action.js';
+import Loading from '../../components/Loading/Loading.jsx';
 
 class App extends Component {
-	render() {
-		const { routes } = this.props;
-		const { setAuthData } = this.props;
+	constructor(props) {
+		super(props);
+		this.state = {
+			isLoading: false,
+		};
+	}
 
+	componentWillMount() {
+		const {setAuthData} = this.props;
+		this.setLoadingStatus(true);
 		UserService.checkAuth().then((response) => {
 			if (response.ok) {
 				setAuthData({
@@ -19,12 +26,28 @@ class App extends Component {
 					userName: response.data.login
 				});
 			}
+			this.setLoadingStatus(false);
 		});
+	}
+
+	setLoadingStatus(isLoading) {
+		this.setState({
+			isLoading: isLoading,
+		});
+	}
+
+	render() {
+		const { routes } = this.props;
+		const { isLoading } = this.state;
 
 		return (
-			<Switch>
-				{ routes }
-			</Switch>
+			!isLoading ? (
+				<Switch>
+					{routes}
+				</Switch>
+			) : (
+				<Loading/>
+			)
 		);
 	}
 }
@@ -46,13 +69,8 @@ const mapDispatchToProps = dispatch => {
 	return {
 		setAuthData(data) {
 			dispatch(setAuthInfo(data));
-		},
-		setLoading(isLoading) {
-			dispatch(setLoadingStatus({
-				isLoading: isLoading,
-			}));
 		}
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

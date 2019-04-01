@@ -12,6 +12,7 @@ module.exports = merge(common, {
 	watch: true,
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
+		new HtmlWebpackPlugin({template: 'index.html'}),
 	],
 	devServer: {
 		contentBase: common.context,

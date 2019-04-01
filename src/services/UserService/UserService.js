@@ -69,6 +69,10 @@ class UserService {
 	checkAuth() {
 		return this._handleAuthResponse(UserService._sendAuthRequest('GET', '/session'));
 	}
+
+	logOut() {
+		return this._handleAuthResponse(UserService._sendAuthRequest('DELETE', '/session'));
+	}
 }
 
 export default new UserService();

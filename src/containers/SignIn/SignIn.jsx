@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Footer from '../../components/Footer/Footer.jsx';
 import Header from '../../components/Header/Header.jsx';
@@ -11,7 +12,6 @@ import setAuthInfo from '../../redux/auth/auth.action.js';
 
 import './SignIn.css';
 import './Mobile.css';
-import PropTypes from 'prop-types';
 
 class SignIn extends React.Component {
 	constructor(props) {
@@ -59,10 +59,8 @@ class SignIn extends React.Component {
 	}
 
 	_setFormStatus(newState) {
-		const log = newState.hasOwnProperty('loginIsValid') ? newState : this.state;
-		const log1 = newState.hasOwnProperty('passwordIsValid') ? newState : this.state;
-		const { loginIsValid } = log;
-		const { passwordIsValid } = log1;
+		const { loginIsValid } = newState.hasOwnProperty('loginIsValid') ? newState : this.state;
+		const { passwordIsValid } = newState.hasOwnProperty('passwordIsValid') ? newState : this.state;
 		this.setState({
 			formIsValid: loginIsValid && passwordIsValid,
 			...newState

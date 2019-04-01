@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 
@@ -73,7 +74,7 @@ app.delete('/api/session', (req, res) => {
 app.options('/api/*', (req, res, next) => {
 	res.status(RESPONSE_CODES.OK);
 	res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
-	res.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+	res.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
 	res.set('Access-Control-Allow-Headers', 'X-PINGOTHER, Content-Type');
 	res.set('Access-Control-Allow-Credentials', 'true');
 	res.end();

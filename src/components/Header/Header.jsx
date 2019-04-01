@@ -6,8 +6,16 @@ import './Header.css';
 import history from '../../middleware/history/history.js';
 import Button from '../Button/Button.jsx';
 import { PATHS } from '../../routes.jsx';
+import setAuthData from '../../redux/auth/auth.action.js';
+import UserService from '../../services/UserService/UserService.js';
 
 class Header extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this._signOutClicker = this.signOutOnClick.bind(this);
+	}
+
 	static signInOnClick() {
 		if (history.location.pathname !== PATHS.SIGN_IN) {
 			history.push(PATHS.SIGN_IN);
@@ -24,6 +32,18 @@ class Header extends React.Component {
 		if (history.location.pathname !== PATHS.MENU) {
 			history.push(PATHS.MENU);
 		}
+	}
+
+	signOutOnClick() {
+		const { setAuthInfo } = this.props;
+
+		UserService.logOut()
+			.then(() => {
+				setAuthInfo({
+					isAuthorized: false,
+					login: ''
+				});
+			});
 	}
 	
 	render() {
@@ -59,7 +79,7 @@ class Header extends React.Component {
 						</div>
 						<div className='header__navigation-element'>
 							<img src='./static/img/exit.png' className='header__navigation-image'/>
-							<div className='header__navigation-label'>Log Out</div>
+							<div className='header__navigation-label' onClick={this._signOutClicker}>Log Out</div>
 						</div>
 					</nav>
 				)}
@@ -86,7 +106,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-	return {};
+	return {
+		setAuthInfo(data) {
+			dispatch(setAuthData(data));
+		}
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
