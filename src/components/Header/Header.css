@@ -15,7 +15,7 @@ header {
     padding: 2vmin;
 }
 
-.header__logo__label {
+.header__logo-label {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -30,25 +30,23 @@ nav {
     font-size: 34px;
     grid-column: 3/4;
     display: flex;
+    flex-direction: row;
     font-family: 'Baloo Chettan', cursive;
     justify-content: space-evenly;
     padding-top: 2vmin;
     padding-right: 2vmin;
 }
 
-.header__navigation__image {
-    height: 45px;
+.header__navigation-image {
+    height: 55px;
+    padding-right: 1vmin;
 }
 
-.header__navigation__signIn {
+.header__navigation-element {
     cursor: pointer;
+    display: flex;
 }
-
-.header__navigation__signUp {
-    cursor: pointer;
-}
-
-.header__logo__image {
+.header__logo-image {
     height: 50px;
     padding-left: 2vmin;
     padding-right: 2vmin;
@@ -61,7 +59,7 @@ nav {
     padding: 2vmin;
 }
 
-.header__search__input {
+.header__search-input {
     outline: 0;
     border-radius: 20px;
     border: 3px solid #08043A;
@@ -72,6 +70,14 @@ nav {
     width: 50%;
 }
 
-.header__search__button {
+.header__search-button {
     font-size: 30px;
+}
+
+.header__navigation-profile {
+    cursor: pointer;
+}
+
+.header__navigation-label {
+    padding-top: 1vmin;
 }

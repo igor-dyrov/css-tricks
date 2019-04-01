@@ -3,7 +3,7 @@ main {
     width: 100%;
     grid-row: 2/3;
     grid-column: 1/4;
-    background-color: #ffd7c6;
+    background-color:  #ffe4bb;
 }
 
 .main__posts {
