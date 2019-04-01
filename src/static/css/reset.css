@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Anton');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Germania+One');
+@import url('https://fonts.googleapis.com/css?family=Germania+One|Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan|Lato');
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: auto;
+    background-color:  #522580;
+}
+
