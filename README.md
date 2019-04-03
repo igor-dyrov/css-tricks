@@ -7,7 +7,6 @@
 * Webpack
 * NodeJS
 * mongoDB
-* SCSS
 ## Launch
 1. npm i
 2. npm run wds
