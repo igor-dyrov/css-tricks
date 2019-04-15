@@ -61,15 +61,15 @@
         justify-content: center;
     }
 
-    .post-block__content {
+    .advantage__content {
         font-size: 4vmin;
     }
 
-    .post-block__label {
+    .advantage__label {
         font-size: 6vmin;
     }
 
-    .footer__menu {
+    .footer-menu {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -77,16 +77,16 @@
         font-size: 8vmin;
     }
 
-    .footer__contact__image {
+    .footer-contact__image {
         height: 10vmin;
         padding: 2vmin;
     }
 
-    .footer__menu__element {
+    .footer-menu__link {
         width: 100%;
     }
 
-    .main__posts {
+    .advantages {
         flex-direction: column;
     }
 }

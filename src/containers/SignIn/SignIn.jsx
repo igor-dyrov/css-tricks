@@ -117,37 +117,37 @@ class SignIn extends React.Component {
 			<ContainerWrapper>
 				<Header/>
 				<main>
-					<div className='main__signIn-block'>
-						<h1 className='signIn-block__label'>Sign In</h1>
-						<div className='signIn-block__form'>
-							<div className='signIn-block__form-row'>
-								<p className='signIn-block__form-error' id='signIn__login-error'/>
+					<div className='signIn'>
+						<h1 className='signIn__label'>Sign In</h1>
+						<div className='signIn-form'>
+							<div className='form-row'>
+								<p className='form__error-label' id='signIn__login-error'/>
 							</div>
-							<div className='signIn-block__form-row'>
-								<div className='signIn-block__form-label'>Login</div>
+							<div className='form-row'>
+								<div className='form-row__label'>Login</div>
 								<input
-									className='signIn-block__form-input'
+									className='form-row__input'
 									id='signIn__login'
 									name='login'
 									onBlur={this.validateInput}
 								/>
 							</div>
-							<div className='signIn-block__form-row'>
-								<p className='signIn-block__form-error' id='signIn__password-error'/>
+							<div className='form-row'>
+								<p className='form__error-label' id='signIn__password-error'/>
 							</div>
-							<div className='signIn-block__form-row'>
-								<div className='signIn-block__form-label'>Password</div>
+							<div className='form-row'>
+								<div className='form-row__label'>Password</div>
 								<input
-									className='signIn-block__form-input'
+									className='form-row__input'
 									id='signIn__password'
 									type='password'
 									name='password'
 									onBlur={this.validateInput}
 								/>
 							</div>
-							<div className='signIn-block__form-buttons'>
+							<div className='form__buttons'>
 								<Button
-									className={`signIn-block__button ${formIsValid ? '' : 'disabled'}`}
+									className={`signIn__button_action_submit ${formIsValid ? '' : 'signIn__button_disabled'}`}
 									text='Log In'
 									onClick={this.onSubmit}
 								/>

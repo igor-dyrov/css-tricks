@@ -6,7 +6,7 @@ const delay = require('express-delay');
 
 const app = express();
 // Delay all responses for 1 second
-app.use(delay(1500));
+app.use(delay(750));
 app.use(bodyParser.json());
 
 const MongoClient = require('mongodb').MongoClient;

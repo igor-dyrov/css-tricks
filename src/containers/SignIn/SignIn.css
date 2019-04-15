@@ -1,11 +1,11 @@
-.main__signIn-block {
+.signIn {
     height: 80%;
     display: grid;
     grid-template-columns: 0.5fr 0.6fr 0.5fr;
     grid-template-rows: 0.1fr 1fr;
 }
 
-.signIn-block__label {
+.signIn__label {
     font-family: 'Anton', sans-serif;
     font-size: 50px;
     padding: 3vmin;
@@ -15,7 +15,7 @@
     grid-row: 1/2;
 }
 
-.signIn-block__form {
+.signIn-form {
     font-family: 'Roboto Mono', monospace;
     font-weight: lighter;
     border: #522580 15px solid;
@@ -30,12 +30,12 @@
     justify-content: space-around;
 }
 
-.signIn-block__form-row {
+.form-row {
     display: grid;
     grid-template-columns: 1fr 0.5fr;
 }
 
-.signIn-block__form-label {
+.form-row__label {
     text-align: left;
     padding-left: 4vmin;
     grid-column: 1/2;
@@ -45,7 +45,7 @@
     color: #08043A;
 }
 
-.signIn-block__form-input {
+.form-row__input {
     grid-column: 2/3;
     margin-left: 4vmin;
     margin-right: 4vmin;
@@ -57,13 +57,13 @@
     padding-left: 1vmin;
 }
 
-.signIn-block__form-buttons {
+.form__buttons {
     margin-top: 2vmin;
     display: flex;
     justify-content: center;
 }
 
-.signIn-block__button {
+.signIn__button_action_submit {
     background-color: #08043A;
     color: #C79022;
     border: #522580 solid 4px;
@@ -73,22 +73,22 @@
     width: 100%;
 }
 
-.signIn-block__button:hover {
+.signIn__button_action_submit:hover {
     background-color: #522580;
     color: #C79022;
 }
 
-.disabled {
+.signIn__button_disabled {
     background-color: grey;
     cursor: default;
 }
 
-.disabled:hover {
+.signIn__button_disabled:hover {
     background-color: grey;
     color: #C79022;
 }
 
-.signIn-block__form-error {
+.form__error-label {
     display: none;
     text-align: center;
     grid-column: 1/3;

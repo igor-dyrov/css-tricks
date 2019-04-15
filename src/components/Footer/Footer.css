@@ -6,7 +6,7 @@ footer {
     grid-template-columns: 2fr 1fr 2fr;
 }
 
-.footer__menu {
+.footer-menu {
     font-size: 32px;
     grid-column: 1/2;
     font-family: 'Baloo Chettan', cursive;
@@ -16,7 +16,7 @@ footer {
     height: 100%;
 }
 
-.footer__menu__element {
+.footer-menu__link {
     padding-top: 2vmin;
     width: 10vw;
     text-align: center;
@@ -24,7 +24,7 @@ footer {
     color: #08043A;
 }
 
-.footer__contact {
+.footer-contact {
     padding-top: 2vmin;
     padding-bottom: 1vmin;
     grid-column: 3/4;
@@ -32,7 +32,7 @@ footer {
     justify-content: space-evenly;
 }
 
-.footer__contact__image {
+.footer-contact__image {
     height: 5vmin;
     cursor: pointer;
 }
