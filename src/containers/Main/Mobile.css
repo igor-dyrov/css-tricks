@@ -1,3 +1,13 @@
+@media only screen and (max-width: 950px) {
+    .header-search {
+        display: none;
+    }
+
+    header {
+        grid-template-columns: 1.5fr 1fr 2fr;
+    }
+}
+
 @media only screen and (max-width: 870px) {
     body {
         grid-template-rows: 0.2fr 2fr;
@@ -12,7 +22,7 @@
         position: relative;
     }
 
-    .header__logo {
+    .header-logo {
         grid-column: 1/4;
         justify-content: center;
     }
@@ -22,19 +32,19 @@
         width: 30vmin;
     }
 
-    .header__logo-image {
+    .header-logo__image {
         height: 20vmin;
     }
 
-    .header__logo-label {
+    .header-logo__label {
         font-size: 15vmin;
     }
 
-    .header__search {
+    .header-search {
         display: none;
     }
 
-    .header__navigation-image {
+    .navigation-button__image {
         height: 35px;
     }
 

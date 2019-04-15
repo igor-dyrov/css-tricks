@@ -6,7 +6,7 @@ header {
     grid-template-columns: 1.5fr 1.7fr 2.2fr;
 }
 
-.header__logo {
+.header-logo {
     color: #08043A;
     font-size: 45px;
     grid-column: 1/2;
@@ -15,7 +15,7 @@ header {
     padding: 2vmin;
 }
 
-.header__logo-label {
+.header-logo__label {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -37,29 +37,29 @@ nav {
     padding-right: 2vmin;
 }
 
-.header__navigation-image {
+.navigation-button__image {
     height: 55px;
     padding-right: 1vmin;
 }
 
-.header__navigation-element {
+.navigation-button {
     cursor: pointer;
     display: flex;
 }
-.header__logo-image {
+.header-logo__image {
     height: 50px;
     padding-left: 2vmin;
     padding-right: 2vmin;
 }
 
-.header__search {
+.header-search {
     grid-column: 2/3;
     display: flex;
     justify-content: center;
     padding: 2vmin;
 }
 
-.header__search-input {
+.header-search__input {
     outline: 0;
     border-radius: 20px;
     border: 3px solid #08043A;
@@ -70,7 +70,7 @@ nav {
     width: 50%;
 }
 
-.header__search-button {
+.header-search__button {
     font-size: 30px;
 }
 
@@ -78,6 +78,6 @@ nav {
     cursor: pointer;
 }
 
-.header__navigation-label {
+.navigation-button__text {
     padding-top: 1vmin;
 }

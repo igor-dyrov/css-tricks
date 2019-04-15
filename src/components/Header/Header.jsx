@@ -52,34 +52,34 @@ class Header extends React.Component {
 
 		return (
 			<header>
-				<div className='header__logo'>
-					<img src='./static/img/service.png' className='header__logo-image'/>
-					<div className='header__logo-label' onClick={Header.logoOnClick}>Service</div>
+				<div className='header-logo'>
+					<img src='./static/img/service.png' className='header-logo__image'/>
+					<div className='header-logo__label' onClick={Header.logoOnClick}>Service</div>
 				</div>
-				<div className='header__search'>
-					<Button className='header__search-button' text='Find'/>
-					<input className='header__search-input'/>
+				<div className='header-search'>
+					<Button className='header-search__button' text='Find'/>
+					<input className='header-search__input'/>
 				</div>
 				{!isAuthorized ? (
 					<nav>
-						<div className='header__navigation-element' onClick={Header.signInOnClick}>
-							<img src='./static/img/signIn.png' className='header__navigation-image'/>
-							<div className='header__navigation-label'>Sign In</div>
+						<div className='navigation-button' onClick={Header.signInOnClick}>
+							<img src='./static/img/signIn.png' className='navigation-button__image'/>
+							<div className='navigation-button__text'>Sign In</div>
 						</div>
-						<div className='header__navigation-element' onClick={Header.signUpOnClick}>
-							<img src='./static/img/signUp.png' className='header__navigation-image'/>
-							<div className='header__navigation-label'>Sign Up</div>
+						<div className='navigation-button' onClick={Header.signUpOnClick}>
+							<img src='./static/img/signUp.png' className='navigation-button__image'/>
+							<div className='navigation-button__text'>Sign Up</div>
 						</div>
 					</nav>
 				) : (
 					<nav>
-						<div className='header__navigation-element'>
-							<img src='./static/img/user.png' className='header__navigation-image'/>
-							<div className='header__navigation-label'>{userName}</div>
+						<div className='navigation-button'>
+							<img src='./static/img/user.png' className='navigation-button__image'/>
+							<div className='navigation-button__text'>{userName}</div>
 						</div>
-						<div className='header__navigation-element'>
-							<img src='./static/img/exit.png' className='header__navigation-image'/>
-							<div className='header__navigation-label' onClick={this._signOutClicker}>Log Out</div>
+						<div className='navigation-button'>
+							<img src='./static/img/exit.png' className='navigation-button__image'/>
+							<div className='navigation-button__text' onClick={this._signOutClicker}>Log Out</div>
 						</div>
 					</nav>
 				)}
