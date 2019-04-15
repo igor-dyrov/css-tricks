@@ -34,20 +34,16 @@ class UserService {
 	_handleAuthResponse(_fetch) {
 		return _fetch
 			.then((response) => {
-				if (response.status === 200) {
-					return response.json()
-						.then((data) => {
-							this.userInfo.login = response.login;
-							this._isAuth = true;
-							return {
-								ok: true,
-								data: data,
-							};
-						});
-				}
-				return {
-					ok: false,
-				};
+				const isSuccess = response.status === 200;
+				return response.json()
+					.then((data) => {
+						this.userInfo.login = response.login;
+						this._isAuth = isSuccess;
+						return {
+							ok: isSuccess,
+							data: isSuccess ? data : data.message,
+						};
+					});
 			});
 	}
 

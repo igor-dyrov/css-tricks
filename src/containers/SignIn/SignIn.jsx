@@ -23,13 +23,10 @@ class SignIn extends React.Component {
 			passwordIsValid: true,
 			formIsValid: true,
 		};
-		this.inputValidator = this.validateInput.bind(this);
-		this._submitter = this.onSubmit.bind(this);
 		this._submitterWithEnter = this.loginWithEnter.bind(this);
 	}
 
 	componentWillMount() {
-		console.log(UserService.isAuth());
 		if (UserService.isAuth()) {
 			history.push(PATHS.MENU);
 		}
@@ -44,9 +41,10 @@ class SignIn extends React.Component {
 		window.removeEventListener('keypress', this._submitterWithEnter);
 	}
 
-	onSubmit() {
+	onSubmit = () => {
 		this.validateForm();
 		const { formIsValid } = this.state;
+		const errorLabel = document.getElementById('signIn__login-error');
 		if (formIsValid) {
 			const { setAuthData } = this.props;
 			const body = {
@@ -61,29 +59,15 @@ class SignIn extends React.Component {
 							userName: response.data.login
 						});
 						history.push(PATHS.MENU);
+					} else {
+						errorLabel.innerText = response.data;
+						errorLabel.style.display = 'block';
 					}
 				});
 		}
-	}
+	};
 
-	validateForm() {
-		const inputNames = ['login', 'password'];
-		inputNames.forEach((name) => {
-			document.getElementById(`signIn__${name}`).focus();
-			document.getElementById(`signIn__${name}`).blur();
-		});
-	}
-
-	_setFormStatus(newState) {
-		const { loginIsValid } = newState.hasOwnProperty('loginIsValid') ? newState : this.state;
-		const { passwordIsValid } = newState.hasOwnProperty('passwordIsValid') ? newState : this.state;
-		this.setState({
-			formIsValid: loginIsValid && passwordIsValid,
-			...newState
-		});
-	}
-
-	validateInput(event) {
+	validateInput = (event) => {
 		let isValid = false;
 		const property = `${event.target.name}IsValid`;
 		const newState = {};
@@ -100,6 +84,24 @@ class SignIn extends React.Component {
 		}
 		newState[property] = isValid;
 		this._setFormStatus(newState);
+	};
+
+	_setFormStatus(newState) {
+		const { loginIsValid } = newState.hasOwnProperty('loginIsValid') ? newState : this.state;
+		const { passwordIsValid } = newState.hasOwnProperty('passwordIsValid') ? newState : this.state;
+		this.setState({
+			formIsValid: loginIsValid && passwordIsValid,
+			...newState
+		});
+	}
+
+
+	validateForm() {
+		const inputNames = ['login', 'password'];
+		inputNames.forEach((name) => {
+			document.getElementById(`signIn__${name}`).focus();
+			document.getElementById(`signIn__${name}`).blur();
+		});
 	}
 
 	loginWithEnter(event) {
@@ -127,7 +129,7 @@ class SignIn extends React.Component {
 									className='signIn-block__form-input'
 									id='signIn__login'
 									name='login'
-									onBlur={this.inputValidator}
+									onBlur={this.validateInput}
 								/>
 							</div>
 							<div className='signIn-block__form-row'>
@@ -140,14 +142,14 @@ class SignIn extends React.Component {
 									id='signIn__password'
 									type='password'
 									name='password'
-									onBlur={this.inputValidator}
+									onBlur={this.validateInput}
 								/>
 							</div>
 							<div className='signIn-block__form-buttons'>
 								<Button
 									className={`signIn-block__button ${formIsValid ? '' : 'disabled'}`}
 									text='Log In'
-									onClick={this._submitter}
+									onClick={this.onSubmit}
 								/>
 							</div>
 						</div>
