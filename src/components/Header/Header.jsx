@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import './Header.css';
+import './Header.scss';
 import history from '../../middleware/history/history.js';
 import Button from '../Button/Button.jsx';
 import { PATHS } from '../../routes.jsx';

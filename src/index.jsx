@@ -8,7 +8,7 @@ import history from './middleware/history/history.js';
 import App from './containers/App/App.jsx';
 import { routes } from './routes.jsx';
 
-import './static/css/reset.css';
+import './static/scss/reset.scss';
 
 const store = configureStore();
 

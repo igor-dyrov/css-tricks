@@ -23,9 +23,16 @@ module.exports = {
 				loader: 'eslint-loader'
 			},
 			{
+				test: /\.scss$/,
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: ['scss-loader', 'sass-loader']
+				})
+			},
+			{
 				test: /\.css$/,
 				use: extractCSS.extract([
-					'css-loader',
+					'scss-loader',
 					'postcss-loader'
 				])
 			}
