@@ -33,10 +33,29 @@ class Header extends React.Component {
 	constructor(props) {
 		super(props);
 		
-		this._signOutClicker = this.signOutOnClick.bind(this);
+		this.state = {
+			mobileMenuIsVisible: false,
+		};
 	}
-	
-	signOutOnClick() {
+
+	mobileMenuOnClick = () => {
+		const header = document.getElementsByTagName('header')[0];
+		const { mobileMenuIsVisible } = this.state;
+
+		if (mobileMenuIsVisible) {
+			header.style['grid-template-rows'] = '1fr';
+			this.setState({
+				mobileMenuIsVisible: false,
+			});
+		} else {
+			header.style['grid-template-rows'] = '1fr 0.5fr';
+			this.setState({
+				mobileMenuIsVisible: true,
+			});
+		}
+	};
+
+	signOutOnClick = () => {
 		const { setAuthInfo } = this.props;
 		
 		UserService.logOut()
@@ -46,12 +65,13 @@ class Header extends React.Component {
 					login: ''
 				});
 			});
-	}
+	};
 	
 	render() {
 		const { isAuthorized } = this.props;
 		const { userName } = this.props;
-		
+		const { mobileMenuIsVisible } = this.state;
+
 		return (
 			<header>
 				<div className='header-logo'>
@@ -81,25 +101,27 @@ class Header extends React.Component {
 						</div>
 						<div className='navigation-button'>
 							<img src='./static/img/exit.png' className='navigation-button__image'/>
-							<div className='navigation-button__text' onClick={this._signOutClicker}>Log Out</div>
+							<div className='navigation-button__text' onClick={this.signOutOnClick}>Log Out</div>
 						</div>
 					</nav>
 				)}
-				<div className='header__mobile-button'>
+				<div className='header__mobile-button' onClick={this.mobileMenuOnClick}>
 					<div className='line'/>
 					<div className='line'/>
 					<div className='line'/>
 				</div>
-				<div className='mobile-navigation'>
-					<div className='navigation-button' onClick={Header.signInOnClick}>
-						<img src='./static/img/signIn.png' className='navigation-button__image'/>
-						<div className='navigation-button__text'>Sign In</div>
+				{mobileMenuIsVisible ? (
+					<div className='mobile-navigation'>
+						<div className='navigation-button' onClick={Header.signInOnClick}>
+							<img src='./static/img/signIn.png' className='navigation-button__image'/>
+							<div className='navigation-button__text'>Sign In</div>
+						</div>
+						<div className='navigation-button' onClick={Header.signUpOnClick}>
+							<img src='./static/img/signUp.png' className='navigation-button__image'/>
+							<div className='navigation-button__text'>Sign Up</div>
+						</div>
 					</div>
-					<div className='navigation-button' onClick={Header.signUpOnClick}>
-						<img src='./static/img/signUp.png' className='navigation-button__image'/>
-						<div className='navigation-button__text'>Sign Up</div>
-					</div>
-				</div>
+				) : ''}
 			</header>
 		);
 	}
