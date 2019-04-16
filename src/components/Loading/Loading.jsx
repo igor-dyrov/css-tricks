@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper.js';
-import './Loading.css';
+import './Loading.scss';
 
 export default function Loading() {
 	return (
