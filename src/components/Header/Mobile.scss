@@ -20,7 +20,7 @@
     grid-column: 1/4;
     display: grid;
     grid-template-columns: 1fr 0.4fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 1fr 0.5fr;
     position: relative;
   }
 
@@ -52,7 +52,6 @@
       align-items: center;
       grid-column: 2/3;
       grid-row: 1/2;
-      //border-left: #08043A 1px solid;
     }
   }
 }

@@ -90,6 +90,9 @@ class Header extends React.Component {
 					<div className='line'/>
 					<div className='line'/>
 				</div>
+				<div className='mobile-navigation'>
+				
+				</div>
 			</header>
 		);
 	}
