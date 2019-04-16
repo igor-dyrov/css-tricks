@@ -103,6 +103,7 @@ app.post('/api/session', cors(), (req, res) => { //login
 						message: 'Wrong login or password'
 					});
 				}
+				db.close();
 			});
 		});
 	}
@@ -130,6 +131,7 @@ app.use('/api/session', (req, res) => { //check auth
 					message: 'not authorized'
 				});
 			}
+			db.close();
 		});
 	});
 });
