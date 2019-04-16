@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import Footer from '../../components/Footer/Footer.jsx';
 import Header from '../../components/Header/Header.jsx';
-import './Main.css';
-import './Mobile.css';
+import './Main.scss';
+import './Mobile.scss';
 import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper.js';
 
 const exampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -20,21 +20,21 @@ class Main extends React.Component {
 				<Header/>
 				<main>
 					<h1 className='main__label'>Why you should cooperate with us?</h1>
-					<div className='main__posts'>
-						<div className='main__post-block'>
-							<img className='post-block__image' src='static/img/resp.png'/>
-							<div className='post-block__label'>Responsibility</div>
-							<div className='post-block__content'>{exampleText}</div>
+					<div className='advantages'>
+						<div className='advantage'>
+							<img className='advantage__image' src='static/img/resp.png'/>
+							<div className='advantage__label'>Responsibility</div>
+							<div className='advantage__content'>{exampleText}</div>
 						</div>
-						<div className='main__post-block'>
-							<img className='post-block__image' src='static/img/prof.png'/>
-							<div className='post-block__label'>Professionality</div>
-							<div className='post-block__content'>{exampleText}</div>
+						<div className='advantage'>
+							<img className='advantage__image' src='static/img/prof.png'/>
+							<div className='advantage__label'>Professionality</div>
+							<div className='advantage__content'>{exampleText}</div>
 						</div>
-						<div className='main__post-block'>
-							<img className='post-block__image' src='static/img/polit.png'/>
-							<div className='post-block__label'>Politeness</div>
-							<div className='post-block__content'>{exampleText}</div>
+						<div className='advantage'>
+							<img className='advantage__image' src='static/img/polit.png'/>
+							<div className='advantage__label'>Politeness</div>
+							<div className='advantage__content'>{exampleText}</div>
 						</div>
 					</div>
 				</main>

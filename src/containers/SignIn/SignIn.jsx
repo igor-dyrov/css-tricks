@@ -12,8 +12,8 @@ import Validator from '../../modules/Validator.js';
 import UserService from '../../services/UserService/UserService.js';
 import setAuthInfo from '../../redux/auth/auth.action.js';
 
-import './SignIn.css';
-import './Mobile.css';
+import './SignIn.scss';
+import './Mobile.scss';
 
 class SignIn extends React.Component {
 	constructor(props) {
@@ -23,30 +23,28 @@ class SignIn extends React.Component {
 			passwordIsValid: true,
 			formIsValid: true,
 		};
-		this.inputValidator = this.validateInput.bind(this);
-		this._submitter = this.onSubmit.bind(this);
 		this._submitterWithEnter = this.loginWithEnter.bind(this);
 	}
 
 	componentWillMount() {
-		console.log(UserService.isAuth());
 		if (UserService.isAuth()) {
 			history.push(PATHS.MENU);
 		}
 		window.addEventListener('keypress', this._submitterWithEnter);
 	}
-
+	
 	componentDidMount() {
 		this.validateForm();
 	}
-
+	
 	componentWillUnmount() {
 		window.removeEventListener('keypress', this._submitterWithEnter);
 	}
-
-	onSubmit() {
+	
+	onSubmit = () => {
 		this.validateForm();
 		const { formIsValid } = this.state;
+		const errorLabel = document.getElementById('signIn__login-error');
 		if (formIsValid) {
 			const { setAuthData } = this.props;
 			const body = {
@@ -61,20 +59,15 @@ class SignIn extends React.Component {
 							userName: response.data.login
 						});
 						history.push(PATHS.MENU);
+					} else {
+						errorLabel.innerText = response.data;
+						errorLabel.style.display = 'block';
 					}
 				});
 		}
-	}
-
-	validateForm() {
-		const inputNames = ['login', 'password'];
-		inputNames.forEach((name) => {
-			document.getElementById(`signIn__${name}`).focus();
-			document.getElementById(`signIn__${name}`).blur();
-		});
-	}
-
-	_setFormStatus(newState) {
+	};
+	
+	setFormStatus(newState) {
 		const { loginIsValid } = newState.hasOwnProperty('loginIsValid') ? newState : this.state;
 		const { passwordIsValid } = newState.hasOwnProperty('passwordIsValid') ? newState : this.state;
 		this.setState({
@@ -82,14 +75,18 @@ class SignIn extends React.Component {
 			...newState
 		});
 	}
-
-	validateInput(event) {
+	
+	inputOnBlur = (event) => {
+		this.validateInput(event.target.name, event.target.value);
+	};
+	
+	validateInput(name, value) {
 		let isValid = false;
-		const property = `${event.target.name}IsValid`;
+		const property = `${name}IsValid`;
 		const newState = {};
-		if (event.target.value.length) {
-			const error = Validator.validateInput(event.target.name, event.target.value);
-			const errorLabel = document.getElementById(`signIn__${event.target.name}-error`);
+		if (value.length) {
+			const error = Validator.validateInput(name, value);
+			const errorLabel = document.getElementById(`signIn__${name}-error`);
 			if (!error) {
 				errorLabel.style.display = 'none';
 				isValid = true;
@@ -99,7 +96,14 @@ class SignIn extends React.Component {
 			}
 		}
 		newState[property] = isValid;
-		this._setFormStatus(newState);
+		this.setFormStatus(newState);
+	}
+	
+	validateForm() {
+		const inputNames = ['login', 'password'];
+		inputNames.forEach((name) => {
+			this.validateInput(name, document.getElementById(`signIn__${name}`).value);
+		});
 	}
 
 	loginWithEnter(event) {
@@ -115,39 +119,39 @@ class SignIn extends React.Component {
 			<ContainerWrapper>
 				<Header/>
 				<main>
-					<div className='main__signIn-block'>
-						<h1 className='signIn-block__label'>Sign In</h1>
-						<div className='signIn-block__form'>
-							<div className='signIn-block__form-row'>
-								<p className='signIn-block__form-error' id='signIn__login-error'/>
+					<div className='signIn'>
+						<h1 className='signIn__label'>Sign In</h1>
+						<div className='signIn-form'>
+							<div className='form-row'>
+								<p className='form__error-label' id='signIn__login-error'/>
 							</div>
-							<div className='signIn-block__form-row'>
-								<div className='signIn-block__form-label'>Login</div>
+							<div className='form-row'>
+								<div className='form-row__label'>Login</div>
 								<input
-									className='signIn-block__form-input'
+									className='form-row__input'
 									id='signIn__login'
 									name='login'
-									onBlur={this.inputValidator}
+									onBlur={this.inputOnBlur}
 								/>
 							</div>
-							<div className='signIn-block__form-row'>
-								<p className='signIn-block__form-error' id='signIn__password-error'/>
+							<div className='form-row'>
+								<p className='form__error-label' id='signIn__password-error'/>
 							</div>
-							<div className='signIn-block__form-row'>
-								<div className='signIn-block__form-label'>Password</div>
+							<div className='form-row'>
+								<div className='form-row__label'>Password</div>
 								<input
-									className='signIn-block__form-input'
+									className='form-row__input'
 									id='signIn__password'
 									type='password'
 									name='password'
-									onBlur={this.inputValidator}
+									onBlur={this.inputOnBlur}
 								/>
 							</div>
-							<div className='signIn-block__form-buttons'>
+							<div className='form__buttons'>
 								<Button
-									className={`signIn-block__button ${formIsValid ? '' : 'disabled'}`}
+									className={`signIn__button_action_submit ${formIsValid ? '' : 'signIn__button_disabled'}`}
 									text='Log In'
-									onClick={this._submitter}
+									onClick={this.onSubmit}
 								/>
 							</div>
 						</div>

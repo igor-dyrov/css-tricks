@@ -2,12 +2,15 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import './Header.css';
 import history from '../../middleware/history/history.js';
 import Button from '../Button/Button.jsx';
+import NavigationButton from '../NavigationButton/NavigationButton.jsx';
 import { PATHS } from '../../routes.jsx';
 import setAuthData from '../../redux/auth/auth.action.js';
 import UserService from '../../services/UserService/UserService.js';
+
+import './Header.scss';
+import './Mobile.scss';
 
 class Header extends React.Component {
 	static signInOnClick() {
@@ -15,28 +18,47 @@ class Header extends React.Component {
 			history.push(PATHS.SIGN_IN);
 		}
 	}
-
+	
 	static signUpOnClick() {
 		if (history.location.pathname !== PATHS.SIGN_UP) {
 			history.push(PATHS.SIGN_UP);
 		}
 	}
-
+	
 	static logoOnClick() {
 		if (history.location.pathname !== PATHS.MENU) {
 			history.push(PATHS.MENU);
 		}
 	}
-
+	
 	constructor(props) {
 		super(props);
-
-		this._signOutClicker = this.signOutOnClick.bind(this);
+		
+		this.state = {
+			mobileMenuIsVisible: false,
+		};
 	}
-
-	signOutOnClick() {
+	
+	mobileMenuOnClick = () => {
+		const header = document.getElementsByTagName('header')[0];
+		const { mobileMenuIsVisible } = this.state;
+		
+		if (mobileMenuIsVisible) {
+			header.style['grid-template-rows'] = '1fr';
+			this.setState({
+				mobileMenuIsVisible: false,
+			});
+		} else {
+			header.style['grid-template-rows'] = '1fr 0.5fr';
+			this.setState({
+				mobileMenuIsVisible: true,
+			});
+		}
+	};
+	
+	signOutOnClick = () => {
 		const { setAuthInfo } = this.props;
-
+		
 		UserService.logOut()
 			.then(() => {
 				setAuthInfo({
@@ -44,45 +66,63 @@ class Header extends React.Component {
 					login: ''
 				});
 			});
-	}
+	};
 	
 	render() {
 		const { isAuthorized } = this.props;
 		const { userName } = this.props;
-
+		const { mobileMenuIsVisible } = this.state;
+		
+		const mobileNavigation = isAuthorized ? [
+			<NavigationButton
+				text={userName}
+				imageSource='./static/img/user.png'
+				key='userName'
+			/>,
+			<NavigationButton
+				text='Log Out'
+				imageSource='./static/img/exit.png'
+				onClick={this.signOutOnClick}
+				key='logOut'
+			/>
+		] : [
+			<NavigationButton
+				text='Sign In'
+				imageSource='./static/img/signIn1.png'
+				onClick={Header.signInOnClick}
+				key='signIn'
+			/>,
+			<NavigationButton
+				text='Sign Up'
+				imageSource='./static/img/signUp1.png'
+				onClick={Header.signUpOnClick}
+				key='signUp'
+			/>
+		];
+		
 		return (
 			<header>
-				<div className='header__logo'>
-					<img src='./static/img/service.png' className='header__logo-image'/>
-					<div className='header__logo-label' onClick={Header.logoOnClick}>Service</div>
+				<div className='header-logo'>
+					<img src='./static/img/service.png' className='header-logo__image'/>
+					<div className='header-logo__label' onClick={Header.logoOnClick}>Service</div>
 				</div>
-				<div className='header__search'>
-					<Button className='header__search-button' text='Find'/>
-					<input className='header__search-input'/>
+				<div className='header-search'>
+					<Button className='header-search__button' text='Find'/>
+					<input className='header-search__input'/>
 				</div>
-				{!isAuthorized ? (
-					<nav>
-						<div className='header__navigation-element' onClick={Header.signInOnClick}>
-							<img src='./static/img/signIn.png' className='header__navigation-image'/>
-							<div className='header__navigation-label'>Sign In</div>
-						</div>
-						<div className='header__navigation-element' onClick={Header.signUpOnClick}>
-							<img src='./static/img/signUp.png' className='header__navigation-image'/>
-							<div className='header__navigation-label'>Sign Up</div>
-						</div>
-					</nav>
-				) : (
-					<nav>
-						<div className='header__navigation-element'>
-							<img src='./static/img/user.png' className='header__navigation-image'/>
-							<div className='header__navigation-label'>{userName}</div>
-						</div>
-						<div className='header__navigation-element'>
-							<img src='./static/img/exit.png' className='header__navigation-image'/>
-							<div className='header__navigation-label' onClick={this._signOutClicker}>Log Out</div>
-						</div>
-					</nav>
-				)}
+				<nav>
+					{mobileNavigation}
+				</nav>
+				<div className='header__mobile-button' onClick={this.mobileMenuOnClick}>
+					<div className='line'/>
+					<div className='line'/>
+					<div className='line'/>
+				</div>
+				{mobileMenuIsVisible ? (
+					<div className='mobile-navigation'>
+						{mobileNavigation}
+					</div>
+				) : ''}
 			</header>
 		);
 	}
@@ -97,7 +137,8 @@ Header.propTypes = {
 Header.defaultProps = {
 	isAuthorized: false,
 	userName: 'User',
-	setAuthInfo: () => {}
+	setAuthInfo: () => {
+	}
 };
 
 const mapStateToProps = (state) => {

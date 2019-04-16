@@ -1,7 +1,7 @@
 # Simple modern web project
-![Preview](./img/preview.png "Подпись")
+![Preview](./img/preview.png "Preview")
 ## Technology stack
-* HTML/CSS/JavaScript
+* SCSS
 * React
 * Redux
 * Webpack

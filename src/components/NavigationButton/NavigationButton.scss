@@ -1,0 +1,13 @@
+.navigation-button {
+  cursor: pointer;
+  display: flex;
+
+  &__image {
+    height: 55px;
+    padding-right: 1vmin;
+  }
+
+  &__text {
+    padding-top: 1vmin;
+  }
+}
