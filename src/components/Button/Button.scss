@@ -1,0 +1,23 @@
+@import '../../static/scss/common.scss';
+
+.button {
+  text-align: center;
+  padding: 1vmin 1.5vmin 1vmin 1.5vmin;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.header-search__button {
+  background-color: $yellow;
+  color: $dark-blue;
+  border: 3px solid $dark-blue;
+
+  &:hover {
+    background-color: $dark-blue;
+    color: $yellow;
+  }
+}

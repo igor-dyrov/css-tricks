@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import './Footer.css';
+import './Footer.scss';
 
 export default (props) => {
 	return (

@@ -15,7 +15,7 @@ module.exports = {
 				test: /\.(js|jsx)$/,
 				exclude: /(node_modules|bower_components|server)/,
 				loader: 'babel-loader',
-				options: {presets: ['@babel/env']}
+				options: { presets: ['@babel/env'] }
 			},
 			{
 				test: /\.js$/,
@@ -26,25 +26,29 @@ module.exports = {
 				test: /\.scss$/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
-					use: ['scss-loader', 'sass-loader']
+					use: ['css-loader', 'sass-loader']
 				})
 			},
 			{
 				test: /\.css$/,
 				use: extractCSS.extract([
-					'scss-loader',
-					'postcss-loader'
+					'css-loader',
+					'postcss-loader',
+					{
+						loader: 'group-css-media-queries-loader',
+						options: { sourceMap: true }
+					}
 				])
 			}
 		]
 	},
-	resolve: {extensions: ['*', '.js', '.jsx']},
+	resolve: { extensions: ['*', '.js', '.jsx'] },
 	output: {
 		path: path.resolve(__dirname, '../dist/'),
 		filename: 'bundle.js'
 	},
 	plugins: [
-		new HtmlWebpackPlugin({template: 'index.html'}),
+		new HtmlWebpackPlugin({ template: 'index.html' }),
 		extractCSS,
 	]
 };

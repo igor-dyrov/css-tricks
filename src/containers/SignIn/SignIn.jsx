@@ -12,8 +12,8 @@ import Validator from '../../modules/Validator.js';
 import UserService from '../../services/UserService/UserService.js';
 import setAuthInfo from '../../redux/auth/auth.action.js';
 
-import './SignIn.css';
-import './Mobile.css';
+import './SignIn.scss';
+import './Mobile.scss';
 
 class SignIn extends React.Component {
 	constructor(props) {
