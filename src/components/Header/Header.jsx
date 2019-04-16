@@ -2,12 +2,14 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import './Header.scss';
 import history from '../../middleware/history/history.js';
 import Button from '../Button/Button.jsx';
 import { PATHS } from '../../routes.jsx';
 import setAuthData from '../../redux/auth/auth.action.js';
 import UserService from '../../services/UserService/UserService.js';
+
+import './Header.scss';
+import './Mobile.scss';
 
 class Header extends React.Component {
 	static signInOnClick() {
@@ -15,28 +17,28 @@ class Header extends React.Component {
 			history.push(PATHS.SIGN_IN);
 		}
 	}
-
+	
 	static signUpOnClick() {
 		if (history.location.pathname !== PATHS.SIGN_UP) {
 			history.push(PATHS.SIGN_UP);
 		}
 	}
-
+	
 	static logoOnClick() {
 		if (history.location.pathname !== PATHS.MENU) {
 			history.push(PATHS.MENU);
 		}
 	}
-
+	
 	constructor(props) {
 		super(props);
-
+		
 		this._signOutClicker = this.signOutOnClick.bind(this);
 	}
-
+	
 	signOutOnClick() {
 		const { setAuthInfo } = this.props;
-
+		
 		UserService.logOut()
 			.then(() => {
 				setAuthInfo({
@@ -49,7 +51,7 @@ class Header extends React.Component {
 	render() {
 		const { isAuthorized } = this.props;
 		const { userName } = this.props;
-
+		
 		return (
 			<header>
 				<div className='header-logo'>
@@ -83,6 +85,11 @@ class Header extends React.Component {
 						</div>
 					</nav>
 				)}
+				<div className='header__mobile-button'>
+					<div className='line'/>
+					<div className='line'/>
+					<div className='line'/>
+				</div>
 			</header>
 		);
 	}
@@ -97,7 +104,8 @@ Header.propTypes = {
 Header.defaultProps = {
 	isAuthorized: false,
 	userName: 'User',
-	setAuthInfo: () => {}
+	setAuthInfo: () => {
+	}
 };
 
 const mapStateToProps = (state) => {

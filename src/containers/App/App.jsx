@@ -39,8 +39,6 @@ class App extends Component {
 		const { routes } = this.props;
 		const { isLoading } = this.state;
 		
-		console.log(routes);
-		
 		return (
 			!isLoading ? (
 				<Switch>
@@ -54,7 +52,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-	routes: PropTypes.object.isRequired,
+	routes: PropTypes.array.isRequired,
 	setAuthData: PropTypes.func,
 };
 

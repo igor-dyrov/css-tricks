@@ -1,4 +1,6 @@
-@media screen and (max-width: 870px) {
+@import '../../static/scss/common';
+
+@media screen and (max-width: $mobile-width) {
     .signIn {
         grid-template-columns: 0.1fr 2fr 0.1fr;
         grid-template-rows: 0.1fr 2.5fr;

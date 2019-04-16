@@ -12,6 +12,6 @@ export const PATHS = {
 };
 
 export const routes = [
-	<Route exact path={PATHS.MENU} component={Main}/>,
-	<Route exact path={PATHS.SIGN_IN} component={SignIn}/>
+	<Route exact path={PATHS.MENU} component={Main} key={PATHS.MENU}/>,
+	<Route exact path={PATHS.SIGN_IN} component={SignIn} key={PATHS.SIGN_IN}/>
 ];

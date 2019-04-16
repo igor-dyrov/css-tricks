@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import './Footer.scss';
+import './Mobile.scss';
 
 export default (props) => {
 	return (

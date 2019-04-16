@@ -1,49 +1,9 @@
-@media only screen and (max-width: 950px) {
-    .header-search {
-        display: none;
-    }
+@import '../../static/scss/common';
 
-    header {
-        grid-template-columns: 1.5fr 1fr 2fr;
-    }
-
-    footer {
-      grid-template-columns: 2fr 0.5fr 2fr;
-    }
-}
-
-@media screen and (max-width: 870px) {
+@media screen and (max-width: $mobile-width) {
     body {
         grid-template-rows: 0.2fr 2fr;
         grid-template-columns: repeat(3, 1fr);
-    }
-
-    header {
-        grid-row: 1/2;
-        grid-column: 1/4;
-        display: grid;
-        grid-template-columns: 1.5fr 2fr 1.3fr;
-        position: relative;
-    }
-
-    .header {
-
-        &-search {
-          display: none;
-        }
-
-        &-logo {
-          grid-column: 1/4;
-          justify-content: center;
-
-          &__image {
-            height: 20vmin;
-          }
-
-          &__label {
-            font-size: 15vmin;
-          }
-        }
     }
 
     .navigation-button__image {
@@ -55,12 +15,6 @@
         grid-column: 2/4;
         font-size: 25px;
         display: none;
-    }
-
-    footer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
     .advantages {
@@ -79,25 +33,6 @@
       &__image {
         height: 30vmin;
         width: 30vmin;
-      }
-    }
-
-    .footer {
-      &-menu {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: auto;
-        font-size: 8vmin;
-
-        &__link {
-          width: 100%;
-        }
-      }
-
-      &-contact__image {
-        height: 10vmin;
-        padding: 2vmin;
       }
     }
 }
