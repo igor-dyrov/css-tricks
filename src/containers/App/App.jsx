@@ -38,7 +38,9 @@ class App extends Component {
 	render() {
 		const { routes } = this.props;
 		const { isLoading } = this.state;
-
+		
+		console.log(routes);
+		
 		return (
 			!isLoading ? (
 				<Switch>
