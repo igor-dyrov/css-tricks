@@ -55,20 +55,6 @@ nav {
   padding-right: 2vmin;
 }
 
-.navigation-button {
-  cursor: pointer;
-  display: flex;
-
-  &__image {
-    height: 55px;
-    padding-right: 1vmin;
-  }
-
-  &__text {
-    padding-top: 1vmin;
-  }
-}
-
 .header-search {
   grid-column: 2/3;
   display: flex;
