@@ -18,31 +18,31 @@ class Header extends React.Component {
 			history.push(PATHS.SIGN_IN);
 		}
 	}
-
+	
 	static signUpOnClick() {
 		if (history.location.pathname !== PATHS.SIGN_UP) {
 			history.push(PATHS.SIGN_UP);
 		}
 	}
-
+	
 	static logoOnClick() {
 		if (history.location.pathname !== PATHS.MENU) {
 			history.push(PATHS.MENU);
 		}
 	}
-
+	
 	constructor(props) {
 		super(props);
-
+		
 		this.state = {
 			mobileMenuIsVisible: false,
 		};
 	}
-
+	
 	mobileMenuOnClick = () => {
 		const header = document.getElementsByTagName('header')[0];
 		const { mobileMenuIsVisible } = this.state;
-
+		
 		if (mobileMenuIsVisible) {
 			header.style['grid-template-rows'] = '1fr';
 			this.setState({
@@ -55,10 +55,10 @@ class Header extends React.Component {
 			});
 		}
 	};
-
+	
 	signOutOnClick = () => {
 		const { setAuthInfo } = this.props;
-
+		
 		UserService.logOut()
 			.then(() => {
 				setAuthInfo({
@@ -67,35 +67,39 @@ class Header extends React.Component {
 				});
 			});
 	};
-
+	
 	render() {
 		const { isAuthorized } = this.props;
 		const { userName } = this.props;
 		const { mobileMenuIsVisible } = this.state;
-
+		
 		const mobileNavigation = isAuthorized ? [
 			<NavigationButton
 				text={userName}
 				imageSource='./static/img/user.png'
+				key='userName'
 			/>,
 			<NavigationButton
 				text='Log Out'
 				imageSource='./static/img/exit.png'
 				onClick={this.signOutOnClick}
+				key='logOut'
 			/>
 		] : [
 			<NavigationButton
 				text='Sign In'
-				imageSource='./static/img/signIn.png'
+				imageSource='./static/img/signIn1.png'
 				onClick={Header.signInOnClick}
+				key='signIn'
 			/>,
 			<NavigationButton
 				text='Sign Up'
-				imageSource='./static/img/signUp.png'
+				imageSource='./static/img/signUp1.png'
 				onClick={Header.signUpOnClick}
+				key='signUp'
 			/>
 		];
-
+		
 		return (
 			<header>
 				<div className='header-logo'>
@@ -114,7 +118,7 @@ class Header extends React.Component {
 					<div className='line'/>
 					<div className='line'/>
 				</div>
-				{ mobileMenuIsVisible ? (
+				{mobileMenuIsVisible ? (
 					<div className='mobile-navigation'>
 						{mobileNavigation}
 					</div>
