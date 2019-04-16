@@ -91,7 +91,14 @@ class Header extends React.Component {
 					<div className='line'/>
 				</div>
 				<div className='mobile-navigation'>
-				
+					<div className='navigation-button' onClick={Header.signInOnClick}>
+						<img src='./static/img/signIn.png' className='navigation-button__image'/>
+						<div className='navigation-button__text'>Sign In</div>
+					</div>
+					<div className='navigation-button' onClick={Header.signUpOnClick}>
+						<img src='./static/img/signUp.png' className='navigation-button__image'/>
+						<div className='navigation-button__text'>Sign Up</div>
+					</div>
 				</div>
 			</header>
 		);

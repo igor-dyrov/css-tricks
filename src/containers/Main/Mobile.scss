@@ -6,17 +6,6 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .navigation-button__image {
-        height: 35px;
-    }
-
-    nav {
-        padding-top: 3vmin;
-        grid-column: 2/4;
-        font-size: 25px;
-        display: none;
-    }
-
     .advantages {
       flex-direction: column;
     }
