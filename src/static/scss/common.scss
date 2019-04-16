@@ -6,3 +6,12 @@ $light-yellow: #ffe4bb;
 
 $mobile-width: 870px;
 $tablet-width: 980px;
+
+@mixin purple-blue-background {
+  background-image: linear-gradient(90deg, $purple, $light-blue);
+}
+
+@mixin bold-baloo {
+  font-family: 'Baloo Chettan', cursive;
+  font-weight: bold;
+}

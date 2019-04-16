@@ -40,9 +40,8 @@
       text-align: left;
       padding-left: 4vmin;
       grid-column: 1/2;
-      font-weight: bold;
       font-size: 3.5vmin;
-      font-family: 'Baloo Chettan', cursive;
+      @include bold-baloo;
       color: $dark-blue;
     }
 
