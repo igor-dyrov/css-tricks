@@ -5,7 +5,7 @@ main {
   width: 100%;
   grid-row: 2/3;
   grid-column: 1/4;
-  background-color: #ffe4bb;
+  background-color: $light-yellow;
 }
 
 .advantages {
@@ -17,16 +17,16 @@ main {
   font-family: 'Anton', sans-serif;
   font-size: 50px;
   padding: 3vmin;
-  color: #08043A;
+  color: $dark-blue;
   text-align: center;
 }
 
 .advantage {
   font-family: 'Roboto Mono', monospace;
   font-weight: lighter;
-  border: #522580 15px solid;
+  border: $purple 15px solid;
   border-radius: 20px;
-  background-color: #C79022;
+  background-color: $yellow;
   display: flex;
   justify-content: center;
   flex-direction: column;

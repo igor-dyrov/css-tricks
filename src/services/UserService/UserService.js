@@ -1,4 +1,4 @@
-const urlBack = 'http://localhost:8000/api';
+const urlBack = 'http://localhost:3000/api';
 
 class UserService {
 	constructor() {
@@ -20,7 +20,7 @@ class UserService {
 			headers: {
 				Host: 'localhost',
 			},
-			credentials: 'include',
+			credentials: 'same-origin',
 		};
 		if (method !== 'HEAD' && method !== 'GET') {
 			fPar.body = JSON.stringify(body);

@@ -21,7 +21,7 @@ const RESPONSE_CODES = {
 };
 
 app.post('/api/register', cors(), (req, res) => {
-	res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+	res.set('Access-Control-Allow-Origin', '*');
 	res.set('Access-Control-Allow-Credentials', 'true');
 	console.log(req.body);
 	if (!req.body || !req.body.login || !req.body.password) {
@@ -62,7 +62,7 @@ app.post('/api/register', cors(), (req, res) => {
 });
 
 app.delete('/api/session', (req, res) => {
-	res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+	res.set('Access-Control-Allow-Origin', '*');
 	res.set('Access-Control-Allow-Credentials', 'true');
 	const date = new Date(Date.now());
 	res.set('Set-Cookie',`${req.get('Cookie')}; Expires=${date.toUTCString()}`);
@@ -74,7 +74,7 @@ app.delete('/api/session', (req, res) => {
 
 app.options('/api/*', (req, res, next) => {
 	res.status(RESPONSE_CODES.OK);
-	res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+	res.set('Access-Control-Allow-Origin', '*');
 	res.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
 	res.set('Access-Control-Allow-Headers', 'X-PINGOTHER, Content-Type');
 	res.set('Access-Control-Allow-Credentials', 'true');
@@ -82,7 +82,7 @@ app.options('/api/*', (req, res, next) => {
 });
 
 app.post('/api/session', cors(), (req, res) => { //login
-	res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+	res.set('Access-Control-Allow-Origin', '*');
 	res.set('Access-Control-Allow-Credentials', 'true');
 	if (!req.body || !req.body.login || !req.body.password) {
 		res.status(RESPONSE_CODES.FORBIDDEN);
@@ -110,7 +110,7 @@ app.post('/api/session', cors(), (req, res) => { //login
 });
 
 app.use('/api/session', (req, res) => { //check auth
-	res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+	res.set('Access-Control-Allow-Origin', '*');
 	res.set('Access-Control-Allow-Credentials', 'true');
 	const cookie = req.get('Cookie');
 	console.log(cookie);

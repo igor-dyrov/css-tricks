@@ -32,15 +32,15 @@ class SignIn extends React.Component {
 		}
 		window.addEventListener('keypress', this._submitterWithEnter);
 	}
-
+	
 	componentDidMount() {
 		this.validateForm();
 	}
-
+	
 	componentWillUnmount() {
 		window.removeEventListener('keypress', this._submitterWithEnter);
 	}
-
+	
 	onSubmit = () => {
 		this.validateForm();
 		const { formIsValid } = this.state;
@@ -66,14 +66,27 @@ class SignIn extends React.Component {
 				});
 		}
 	};
-
-	validateInput = (event) => {
+	
+	setFormStatus(newState) {
+		const { loginIsValid } = newState.hasOwnProperty('loginIsValid') ? newState : this.state;
+		const { passwordIsValid } = newState.hasOwnProperty('passwordIsValid') ? newState : this.state;
+		this.setState({
+			formIsValid: loginIsValid && passwordIsValid,
+			...newState
+		});
+	}
+	
+	inputOnBlur = (event) => {
+		this.validateInput(event.target.name, event.target.value);
+	};
+	
+	validateInput(name, value) {
 		let isValid = false;
-		const property = `${event.target.name}IsValid`;
+		const property = `${name}IsValid`;
 		const newState = {};
-		if (event.target.value.length) {
-			const error = Validator.validateInput(event.target.name, event.target.value);
-			const errorLabel = document.getElementById(`signIn__${event.target.name}-error`);
+		if (value.length) {
+			const error = Validator.validateInput(name, value);
+			const errorLabel = document.getElementById(`signIn__${name}-error`);
 			if (!error) {
 				errorLabel.style.display = 'none';
 				isValid = true;
@@ -83,24 +96,13 @@ class SignIn extends React.Component {
 			}
 		}
 		newState[property] = isValid;
-		this._setFormStatus(newState);
-	};
-
-	_setFormStatus(newState) {
-		const { loginIsValid } = newState.hasOwnProperty('loginIsValid') ? newState : this.state;
-		const { passwordIsValid } = newState.hasOwnProperty('passwordIsValid') ? newState : this.state;
-		this.setState({
-			formIsValid: loginIsValid && passwordIsValid,
-			...newState
-		});
+		this.setFormStatus(newState);
 	}
-
-
+	
 	validateForm() {
 		const inputNames = ['login', 'password'];
 		inputNames.forEach((name) => {
-			document.getElementById(`signIn__${name}`).focus();
-			document.getElementById(`signIn__${name}`).blur();
+			this.validateInput(name, document.getElementById(`signIn__${name}`).value);
 		});
 	}
 
@@ -129,7 +131,7 @@ class SignIn extends React.Component {
 									className='form-row__input'
 									id='signIn__login'
 									name='login'
-									onBlur={this.validateInput}
+									onBlur={this.inputOnBlur}
 								/>
 							</div>
 							<div className='form-row'>
@@ -142,7 +144,7 @@ class SignIn extends React.Component {
 									id='signIn__password'
 									type='password'
 									name='password'
-									onBlur={this.validateInput}
+									onBlur={this.inputOnBlur}
 								/>
 							</div>
 							<div className='form__buttons'>
