@@ -7,20 +7,23 @@ const sourcePath = path.join(__dirname, '../src/');
 const extractCSS = new ExtractTextPlugin('styles.min.css');
 
 module.exports = {
+	entry: {
+		'app': ['react-hot-loader/patch', './index.jsx']
+	},
 	context: sourcePath,
-	entry: './index.jsx',
 	module: {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /(node_modules|bower_components|server)/,
-				loader: 'babel-loader',
-				options: { presets: ['@babel/env'] }
-			},
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'eslint-loader'
+				use: [
+					{
+						loader: 'babel-loader',
+						options: { presets: ['@babel/env'] }
+					},
+					'react-hot-loader/webpack',
+					'eslint-loader'
+				],
 			},
 			{
 				test: /\.scss$/,
