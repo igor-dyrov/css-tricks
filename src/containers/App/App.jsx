@@ -15,7 +15,7 @@ class App extends Component {
 		};
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		const { setAuthData } = this.props;
 		this.setLoadingStatus(true);
 		UserService.checkAuth().then((response) => {

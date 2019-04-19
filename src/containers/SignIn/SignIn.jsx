@@ -26,14 +26,11 @@ class SignIn extends React.Component {
 		this._submitterWithEnter = this.loginWithEnter.bind(this);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		if (UserService.isAuth()) {
 			history.push(PATHS.MENU);
 		}
 		window.addEventListener('keypress', this._submitterWithEnter);
-	}
-	
-	componentDidMount() {
 		this.validateForm();
 	}
 	
