@@ -1,4 +1,4 @@
-import { AuthActionTypes } from './auth.reducer.js';
+import { AuthActionTypes } from './auth.reducer.ts';
 
 export default function setAuthInfo(data) {
 	return {

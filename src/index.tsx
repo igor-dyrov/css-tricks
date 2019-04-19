@@ -4,7 +4,7 @@ import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 
-import configureStore from './store';
+import configureStore from './store/index';
 import history from './middleware/history/history.js';
 import App from './containers/App/App';
 import { routes } from './routes.jsx';

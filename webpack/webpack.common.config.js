@@ -29,11 +29,11 @@ module.exports = {
 				test: /\.tsx?$/,
 				use: [
 					"react-hot-loader/webpack",
-					"awesome-typescript-loader",
+					"awesome-typescript-loader?module=es6",
 				]
 			},
 			{
-				enforce: "pre", test: /\.tsx$/,
+				enforce: "pre", test: /\.(ts|tsx)$/,
 				loader: "tslint-loader"
 			},
 			{

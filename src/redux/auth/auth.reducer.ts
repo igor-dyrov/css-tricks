@@ -1,13 +1,22 @@
-const initialState = {
+export interface IAuthState {
+	isAuthorized: boolean;
+	userName: string;
+}
+
+const initialState: IAuthState = {
 	isAuthorized: false,
-	userName: ''
+	userName: '',
 };
+
+/*tslint:disable:variable-name*/
 
 export const AuthActionTypes = {
 	SetAuthInfo: 'SET_AUTH_INFO',
 };
 
-export function auth(state = initialState, action) {
+/*tslint:enable:variable-name*/
+
+export function auth(state: IAuthState = initialState, action): IAuthState {
 	switch (action.type) {
 	case AuthActionTypes.SetAuthInfo:
 		return {
