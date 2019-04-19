@@ -8,7 +8,10 @@ const extractCSS = new ExtractTextPlugin('styles.min.css');
 
 module.exports = {
 	entry: {
-		'app': ['react-hot-loader/patch', './index.tsx']
+		'app': [
+			'react-hot-loader/patch',
+			'./index.tsx'
+		]
 	},
 	context: sourcePath,
 	module: {

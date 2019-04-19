@@ -7,7 +7,7 @@ import { AppContainer } from 'react-hot-loader';
 import configureStore from './store/index';
 import history from './middleware/history/history.js';
 import App from './containers/App/App';
-import { routes } from './routes.jsx';
+import { routes } from './routes';
 
 import './static/scss/reset.scss';
 

@@ -50,7 +50,7 @@
     "jsx-no-lambda": false,
     "jsx-no-bind": true,
     "jsx-curly-spacing": [false, "always"],
-    "jsx-boolean-value": [true, "always"],
+    "jsx-boolean-value": false,
     "jsx-alignment": true
   }
 }

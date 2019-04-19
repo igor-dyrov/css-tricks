@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import history from '../../middleware/history/history.js';
-import Button from '../Button/Button.jsx';
-import NavigationButton from '../NavigationButton/NavigationButton.jsx';
-import { PATHS } from '../../routes.jsx';
+import Button from '../Button/Button.tsx';
+import NavigationButton from '../NavigationButton/NavigationButton.tsx';
+import { PATHS } from '../../routes.tsx';
 import setAuthData from '../../redux/auth/auth.action.js';
 import UserService from '../../services/UserService/UserService.js';
 

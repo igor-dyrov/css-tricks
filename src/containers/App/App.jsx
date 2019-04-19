@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import UserService from '../../services/UserService/UserService.js';
 import setAuthInfo from '../../redux/auth/auth.action.js';
-import Loading from '../../components/Loading/Loading.jsx';
+import Loading from '../../components/Loading/Loading.tsx';
 
 class App extends Component {
 	constructor(props) {

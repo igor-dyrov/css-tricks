@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import history from '../../middleware/history/history.js';
-import { PATHS } from '../../routes.jsx';
-import Footer from '../../components/Footer/Footer.jsx';
+import { PATHS } from '../../routes.tsx';
+import Footer from '../../components/Footer/Footer.tsx';
 import Header from '../../components/Header/Header.jsx';
-import Button from '../../components/Button/Button.jsx';
-import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper.js';
+import Button from '../../components/Button/Button.tsx';
+import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper.ts';
 import Validator from '../../modules/Validator.js';
 import UserService from '../../services/UserService/UserService.js';
 import setAuthInfo from '../../redux/auth/auth.action.js';

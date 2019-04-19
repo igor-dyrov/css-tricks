@@ -1,9 +1,16 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
 import './NavigationButton.scss';
 
-const NavigationButton = (props) => {
+interface IProps {
+	text?: string;
+	onClick?: () => void;
+	imageSource?: string;
+}
+
+// tslint:disable:variable-name
+
+const NavigationButton = (props: IProps) => {
 	const { text } = props;
 	const { onClick } = props;
 	const { imageSource } = props;
@@ -14,16 +21,6 @@ const NavigationButton = (props) => {
 			<div className='navigation-button__text'>{text}</div>
 		</div>
 	);
-};
-
-NavigationButton.propTypes = {
-	text: PropTypes.string.isRequired,
-	onClick: PropTypes.func,
-	imageSource: PropTypes.string.isRequired,
-};
-
-NavigationButton.defaultProps = {
-	onClick: () => {},
 };
 
 export default NavigationButton;
