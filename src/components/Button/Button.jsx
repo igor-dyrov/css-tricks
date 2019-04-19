@@ -3,17 +3,15 @@ import PropTypes from 'prop-types';
 
 import './Button.scss';
 
-class Button extends React.Component {
-	render() {
-		const { className } = this.props;
-		const { text } = this.props;
-		const { onClick } = this.props;
+const Button = (props) => {
+	const { className } = props;
+	const { text } = props;
+	const { onClick } = props;
 
-		return (
-			<div className={`button ${className}`} onClick={onClick}>{ text }</div>
-		);
-	}
-}
+	return (
+		<div className={`button ${className}`} onClick={onClick}>{text}</div>
+	);
+};
 
 Button.propTypes = {
 	className: PropTypes.string,
@@ -24,7 +22,8 @@ Button.propTypes = {
 Button.defaultProps = {
 	className: '',
 	text: '',
-	onClick: () => {}
+	onClick: () => {
+	}
 };
 
 export default Button;

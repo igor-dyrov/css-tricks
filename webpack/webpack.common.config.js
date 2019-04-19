@@ -8,7 +8,7 @@ const extractCSS = new ExtractTextPlugin('styles.min.css');
 
 module.exports = {
 	entry: {
-		'app': ['react-hot-loader/patch', './index.jsx']
+		'app': ['react-hot-loader/patch', './index.tsx']
 	},
 	context: sourcePath,
 	module: {
@@ -24,6 +24,17 @@ module.exports = {
 					'react-hot-loader/webpack',
 					'eslint-loader'
 				],
+			},
+			{
+				test: /\.tsx?$/,
+				use: [
+					"react-hot-loader/webpack",
+					"awesome-typescript-loader",
+				]
+			},
+			{
+				enforce: "pre", test: /\.tsx$/,
+				loader: "tslint-loader"
 			},
 			{
 				test: /\.scss$/,
@@ -45,7 +56,7 @@ module.exports = {
 			}
 		]
 	},
-	resolve: { extensions: ['*', '.js', '.jsx'] },
+	resolve: { extensions: ['*', '.js', '.jsx', '.tsx', '.ts'] },
 	output: {
 		path: path.resolve(__dirname, '../dist/'),
 		filename: 'bundle.js'
