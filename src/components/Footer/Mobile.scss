@@ -1,6 +1,6 @@
 @import '../../static/scss/common';
 
-@media screen and (max-width: $mobile-width) {
+@mixin mobile-footer {
   footer {
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@
   }
 }
 
-@media only screen and (max-width: $tablet-width) {
+@mixin tablet-footer {
   footer {
     grid-template-columns: 2fr 0.5fr 2fr;
   }

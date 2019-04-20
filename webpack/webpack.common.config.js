@@ -38,25 +38,22 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				use: [
-					'style-loader',
-					'css-loader',
-					'resolve-url-loader',
-					'sass-loader'
-				]
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: [
+						'css-loader',
+						'sass-loader',
+						'postcss-loader',
+					]
+				})
 			},
 			{
 				test: /\.css$/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [
-						{
-							loader: 'css-loader',
-							query: {
-								modules: true,
-								sourceMap: true,
-							}
-						}
+						'css-loader',
+						'postcss-loader'
 					]
 				})
 			}

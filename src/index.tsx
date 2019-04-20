@@ -10,6 +10,7 @@ import App from './containers/App/App';
 import { routes } from './routes';
 
 import './static/scss/reset.scss';
+import './static/scss/mobile.scss';
 
 const store = configureStore();
 

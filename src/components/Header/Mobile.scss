@@ -1,6 +1,6 @@
 @import '../../static/scss/common';
 
-@media screen and (max-width: $tablet-width) {
+@mixin tablet-header {
   header {
     grid-template-columns: 1.5fr 1fr 2fr;
     grid-template-rows: 1fr;
@@ -12,7 +12,7 @@
   }
 }
 
-@media screen and (max-width: $mobile-width) {
+@mixin mobile-header {
   header {
     grid-row: 1/2;
     grid-column: 1/4;

@@ -1,6 +1,6 @@
 @import '../../static/scss/common';
 
-@media screen and (max-width: $tablet-width) {
+@mixin mobile-main {
     body {
         grid-template-rows: 0.2fr 2fr;
         grid-template-columns: repeat(3, 1fr);
