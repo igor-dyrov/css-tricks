@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import history from '../../middleware/history/history.js';
 import { PATHS } from '../../routes.tsx';
 import Footer from '../../components/Footer/Footer.tsx';
-import Header from '../../components/Header/Header.jsx';
+import Header from '../../components/Header/Header.tsx';
 import Button from '../../components/Button/Button.tsx';
 import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper.ts';
 import Validator from '../../modules/Validator.js';

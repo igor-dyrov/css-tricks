@@ -20,10 +20,7 @@ module.exports = {
 				test: /\.(js|jsx)$/,
 				exclude: /(node_modules|bower_components|server)/,
 				use: [
-					{
-						loader: 'babel-loader',
-						options: { presets: ['@babel/env'] }
-					},
+					'babel-loader',
 					'react-hot-loader/webpack',
 					'eslint-loader'
 				],
@@ -41,21 +38,27 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: ['css-loader', 'sass-loader']
-				})
+				use: [
+					'style-loader',
+					'css-loader',
+					'resolve-url-loader',
+					'sass-loader'
+				]
 			},
 			{
 				test: /\.css$/,
-				use: extractCSS.extract([
-					'css-loader',
-					'postcss-loader',
-					{
-						loader: 'group-css-media-queries-loader',
-						options: { sourceMap: true }
-					}
-				])
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: [
+						{
+							loader: 'css-loader',
+							query: {
+								modules: true,
+								sourceMap: true,
+							}
+						}
+					]
+				})
 			}
 		]
 	},

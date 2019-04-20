@@ -2,9 +2,10 @@ import * as React from 'react';
 
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
+import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper';
+
 import './Main.scss';
 import './Mobile.scss';
-import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper';
 
 const exampleText: string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation

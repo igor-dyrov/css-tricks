@@ -28,3 +28,9 @@ const render = (component) => {
 };
 
 render(<App routes={routes}/>);
+
+if (module.hot) {
+	module.hot.accept('./containers/App/App.tsx', () => {
+		render(<App routes={routes}/>);
+	});
+}

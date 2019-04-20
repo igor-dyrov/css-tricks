@@ -16,7 +16,7 @@
     "whitespace": [true, "check-module"],
     "no-trailing-whitespace": false,
     "no-namespace": false,
-    "semicolon": [true, "always"],
+    "semicolon": [false, "always"],
     "strict": false,
     "triple-equals": true,
     "curly": true,
