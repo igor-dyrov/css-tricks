@@ -9,7 +9,7 @@ import Header from '../../components/Header/Header.tsx';
 import Button from '../../components/Button/Button.tsx';
 import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper.ts';
 import Validator from '../../modules/Validator.js';
-import UserService from '../../services/UserService/UserService.js';
+import UserService from '../../services/UserService/UserService.ts';
 import setAuthInfo from '../../redux/auth/auth.action.js';
 
 import './SignIn.scss';

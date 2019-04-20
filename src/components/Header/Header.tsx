@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 import NavigationButton from '../NavigationButton/NavigationButton';
 import { PATHS } from '../../routes';
 import setAuthData from '../../redux/auth/auth.action.js';
-import UserService from '../../services/UserService/UserService.js';
+import UserService from '../../services/UserService/UserService';
 
 import './Header.scss';
 import './Mobile.scss';

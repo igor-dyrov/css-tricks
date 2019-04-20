@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Switch, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
-import UserService from '../../services/UserService/UserService.js';
+import UserService from '../../services/UserService/UserService';
 import setAuthInfo from '../../redux/auth/auth.action.js';
 import Loading from '../../components/Loading/Loading';
 
