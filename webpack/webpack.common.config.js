@@ -16,18 +16,19 @@ module.exports = {
 	context: sourcePath,
 	module: {
 		rules: [
-			{
-				test: /\.(js|jsx)$/,
-				exclude: /(node_modules|bower_components|server)/,
-				use: [
-					'babel-loader',
-					'react-hot-loader/webpack',
-					'eslint-loader'
-				],
-			},
+			// {
+			// 	test: /\.(js|jsx)$/,
+			// 	exclude: /(node_modules|bower_components|server)/,
+			// 	use: [
+			// 		'babel-loader',
+			// 		'react-hot-loader/webpack',
+			// 		'eslint-loader'
+			// 	],
+			// },
 			{
 				test: /\.tsx?$/,
 				use: [
+					"babel-loader",
 					"react-hot-loader/webpack",
 					"awesome-typescript-loader?module=es6",
 				]

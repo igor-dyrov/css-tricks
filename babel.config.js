@@ -6,7 +6,7 @@ module.exports = {
 	],
 	plugins: [
 		'@babel/plugin-proposal-class-properties',
-		// 'react-hot-loader/babel',
+		'react-hot-loader/babel',
 		'babel-plugin-styled-components'
 	]
 };
