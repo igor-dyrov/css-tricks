@@ -1,6 +1,6 @@
 export interface IAuthState {
 	isAuthorized: boolean;
-	userName: string;
+	userName?: string;
 }
 
 const initialState: IAuthState = {

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 
 import configureStore from './store/index';
-import history from './middleware/history/history.js';
+import history from './middleware/history/history';
 import App from './containers/App/App';
 import { routes } from './routes';
 

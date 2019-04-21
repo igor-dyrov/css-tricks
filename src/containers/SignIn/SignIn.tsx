@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { SyntheticEvent } from 'react';
 
-import history from '../../middleware/history/history.js';
+import history from '../../middleware/history/history';
 import { PATHS } from '../../routes';
 import Footer from '../../components/Footer/Footer';
-import Header from '../../components/Header/Header';
+import Header from '../Header/Header';
 import Button from '../../components/Button/Button';
 import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper';
-import Validator from '../../modules/Validator.js';
+import Validator from '../../modules/Validator';
 import UserService from '../../services/UserService/UserService';
-import setAuthInfo from '../../redux/auth/auth.action.js';
+import setAuthInfo from '../../redux/auth/auth.action';
 import { IAuthState } from '../../redux/auth/auth.reducer';
 
 import './SignIn.scss';
@@ -20,9 +21,9 @@ interface IProps {
 }
 
 interface IState {
-	formIsValid: boolean;
-	loginIsValid: boolean;
-	passwordIsValid: boolean;
+	formIsValid?: boolean;
+	loginIsValid?: boolean;
+	passwordIsValid?: boolean;
 }
 
 class SignIn extends React.Component<IProps, IState> {
@@ -127,7 +128,7 @@ class SignIn extends React.Component<IProps, IState> {
 		}
 	};
 	
-	private setFormStatus(newState) {
+	private setFormStatus(newState: IState) {
 		const { loginIsValid } = newState.hasOwnProperty('loginIsValid') ? newState : this.state;
 		const { passwordIsValid } = newState.hasOwnProperty('passwordIsValid') ? newState : this.state;
 		this.setState({
@@ -136,8 +137,8 @@ class SignIn extends React.Component<IProps, IState> {
 		});
 	}
 	
-	private inputOnBlur = (event) => {
-		this.validateInput(event.target.name, event.target.value);
+	private inputOnBlur = (event: SyntheticEvent<HTMLInputElement>) => {
+		this.validateInput((event.target as HTMLInputElement).name, (event.target as HTMLInputElement).value);
 	};
 	
 	private validateInput(name, value) {
@@ -174,7 +175,7 @@ class SignIn extends React.Component<IProps, IState> {
 	}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
 	return {};
 };
 

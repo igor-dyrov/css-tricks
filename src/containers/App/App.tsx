@@ -3,7 +3,7 @@ import { Switch, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
 import UserService from '../../services/UserService/UserService';
-import setAuthInfo from '../../redux/auth/auth.action.js';
+import setAuthInfo from '../../redux/auth/auth.action';
 import Loading from '../../components/Loading/Loading';
 
 interface IProps {
@@ -57,7 +57,7 @@ class App extends React.Component<IProps, IState> {
 	}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
 	return {};
 };
 

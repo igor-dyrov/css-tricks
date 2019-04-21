@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Footer from '../../components/Footer/Footer';
-import Header from '../../components/Header/Header';
+import Header from '../Header/Header';
 import ContainerWrapper from '../../components/ContainerWrapper/ContainerWrapper';
 
 import './Main.scss';

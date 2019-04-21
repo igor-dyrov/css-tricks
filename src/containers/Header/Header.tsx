@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import history from '../../middleware/history/history.js';
-import Button from '../Button/Button';
-import NavigationButton from '../NavigationButton/NavigationButton';
+import history from '../../middleware/history/history';
+import Button from '../../components/Button/Button';
+import NavigationButton from '../../components/NavigationButton/NavigationButton';
 import { PATHS } from '../../routes';
-import setAuthData from '../../redux/auth/auth.action.js';
+import setAuthData from '../../redux/auth/auth.action';
 import UserService from '../../services/UserService/UserService';
 
 import './Header.scss';
@@ -135,10 +135,7 @@ class Header extends React.Component<IProps, IState> {
 		
 		UserService.logOut()
 			.then(() => {
-				setAuthInfo({
-					isAuthorized: false,
-					login: '',
-				});
+				setAuthInfo({isAuthorized: false});
 			});
 	}
 }
