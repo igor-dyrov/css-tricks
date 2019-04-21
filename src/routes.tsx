@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router';
 
 import Main from './containers/Main/Main';
-import SignIn from './containers/SignIn/SignIn.jsx';
+import SignIn from './containers/SignIn/SignIn';
 
 export const PATHS = {
 	MENU: '/',

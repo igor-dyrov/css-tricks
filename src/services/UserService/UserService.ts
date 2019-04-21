@@ -10,9 +10,15 @@ interface IAuthInfo {
 	sessionID: string;
 }
 
+interface ISignInRequest {
+	login: string;
+	password: string;
+}
+
 interface IAuthResponse {
 	ok: boolean;
 	data?: IAuthInfo;
+	message?: string;
 }
 
 class UserService {
@@ -47,7 +53,7 @@ class UserService {
 		return this._isAuth;
 	}
 	
-	public login(body): Promise<IAuthResponse> {
+	public login(body: ISignInRequest): Promise<IAuthResponse> {
 		return this.handleAuthResponse(UserService.sendAuthRequest('POST', '/session', body));
 	}
 	
@@ -77,11 +83,14 @@ class UserService {
 				const isSuccess = response.status === 200;
 				return response.json()
 					.then((data) => {
-						this._userInfo.login = data.login;
+						if (isSuccess) {
+							this._userInfo.login = data.login;
+						}
 						this._isAuth = isSuccess;
 						return {
 							ok: isSuccess,
-							data: isSuccess ? data : data.message,
+							message: data.message,
+							data,
 						};
 					});
 			});
