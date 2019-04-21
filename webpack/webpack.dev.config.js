@@ -16,6 +16,5 @@ module.exports = merge(common, {
 		port: 3000,
 		disableHostCheck: true,
 		historyApiFallback: true,
-		hotOnly: true
 	},
 });

@@ -7,42 +7,60 @@ const sourcePath = path.join(__dirname, '../src/');
 const extractCSS = new ExtractTextPlugin('styles.min.css');
 
 module.exports = {
+	entry: {
+		'app': [
+			'react-hot-loader/patch',
+			'./index.tsx'
+		]
+	},
 	context: sourcePath,
-	entry: './index.jsx',
 	module: {
 		rules: [
+			// {
+			// 	test: /\.(js|jsx)$/,
+			// 	exclude: /(node_modules|bower_components|server)/,
+			// 	use: [
+			// 		'babel-loader',
+			// 		'react-hot-loader/webpack',
+			// 		'eslint-loader'
+			// 	],
+			// },
 			{
-				test: /\.(js|jsx)$/,
-				exclude: /(node_modules|bower_components|server)/,
-				loader: 'babel-loader',
-				options: { presets: ['@babel/env'] }
+				test: /\.tsx?$/,
+				use: [
+					"babel-loader",
+					"react-hot-loader/webpack",
+					"awesome-typescript-loader?module=es6",
+				]
 			},
 			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'eslint-loader'
+				enforce: "pre", test: /\.(ts|tsx)$/,
+				loader: "tslint-loader"
 			},
 			{
 				test: /\.scss$/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
-					use: ['css-loader', 'sass-loader']
+					use: [
+						'css-loader',
+						'sass-loader',
+						'postcss-loader',
+					]
 				})
 			},
 			{
 				test: /\.css$/,
-				use: extractCSS.extract([
-					'css-loader',
-					'postcss-loader',
-					{
-						loader: 'group-css-media-queries-loader',
-						options: { sourceMap: true }
-					}
-				])
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: [
+						'css-loader',
+						'postcss-loader'
+					]
+				})
 			}
 		]
 	},
-	resolve: { extensions: ['*', '.js', '.jsx'] },
+	resolve: { extensions: ['*', '.js', '.jsx', '.tsx', '.ts'] },
 	output: {
 		path: path.resolve(__dirname, '../dist/'),
 		filename: 'bundle.js'

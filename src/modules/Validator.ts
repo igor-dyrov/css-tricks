@@ -1,4 +1,7 @@
 class Validator {
+	private readonly checkConfig: object;
+	private readonly checkLists: object;
+	private readonly errorConfig: object;
 	constructor() {
 		this.checkConfig = {
 			loginMin: (value) => /.{3}/.test(value),
@@ -7,7 +10,6 @@ class Validator {
 			passwordMax: (value) => !/.{21}/.test(value),
 			email: (value) => /^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/i.test(value),
 			russian: (value) => !/[а-яё]/i.test(value),
-			passwordsEquality: (value) => value === this.inputs.password.render().value,
 		};
 		this.checkLists = {
 			login: ['loginMax', 'loginMin', 'russian'],
@@ -22,7 +24,7 @@ class Validator {
 		};
 	}
 
-	validateInput(name, value) {
+	public validateInput(name, value) {
 		let error = '';
 		this.checkLists[name].forEach((check) => {
 			if (!this.checkConfig[check](value)) {

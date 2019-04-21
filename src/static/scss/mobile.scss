@@ -1,0 +1,17 @@
+@import './common';
+@import '../../containers/Header/Mobile';
+@import '../../components/Footer/Mobile';
+@import '../../containers/Main/Mobile';
+@import '../../containers/SignIn/Mobile';
+
+@media screen and (max-width: $tablet-width) {
+  @include tablet-header;
+  @include tablet-footer;
+}
+
+@media screen and (max-width: $mobile-width) {
+  @include mobile-header;
+  @include mobile-footer;
+  @include mobile-main;
+  @include mobile-signIn;
+}

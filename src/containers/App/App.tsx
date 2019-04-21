@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Switch, withRouter } from 'react-router';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import UserService from '../../services/UserService/UserService.js';
-import setAuthInfo from '../../redux/auth/auth.action.js';
-import Loading from '../../components/Loading/Loading.jsx';
+import UserService from '../../services/UserService/UserService';
+import setAuthInfo from '../../redux/auth/auth.action';
+import Loading from '../../components/Loading/Loading';
 
-class App extends Component {
+interface IProps {
+	setAuthData: (object) => void;
+	routes: JSX.Element[];
+}
+
+interface IState {
+	isLoading: boolean;
+}
+
+class App extends React.Component<IProps, IState> {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -15,27 +23,21 @@ class App extends Component {
 		};
 	}
 
-	componentWillMount() {
+	public componentDidMount(): void {
 		const { setAuthData } = this.props;
 		this.setLoadingStatus(true);
 		UserService.checkAuth().then((response) => {
 			if (response.ok) {
 				setAuthData({
 					isAuthorized: true,
-					userName: response.data.login
+					userName: response.data.login,
 				});
 			}
 			this.setLoadingStatus(false);
 		});
 	}
 
-	setLoadingStatus(isLoading) {
-		this.setState({
-			isLoading: isLoading,
-		});
-	}
-
-	render() {
+	public render(): JSX.Element {
 		const { routes } = this.props;
 		const { isLoading } = this.state;
 		
@@ -49,26 +51,19 @@ class App extends Component {
 			)
 		);
 	}
+	
+	private setLoadingStatus(isLoading): void {
+		this.setState({isLoading});
+	}
 }
 
-App.propTypes = {
-	routes: PropTypes.array.isRequired,
-	setAuthData: PropTypes.func,
-};
-
-App.defaultProps = {
-	setAuthData: () => {},
-};
-
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
 	return {};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		setAuthData(data) {
-			dispatch(setAuthInfo(data));
-		}
+		setAuthData: (data) => dispatch(setAuthInfo(data)),
 	};
 };
 

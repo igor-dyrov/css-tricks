@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
+
+// tslint:disable:variable-name
 
 const ContainerWrapper = styled.div`
     display: grid;

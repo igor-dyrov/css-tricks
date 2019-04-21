@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router';
 
-import Main from './containers/Main/Main.jsx';
-import SignIn from './containers/SignIn/SignIn.jsx';
+import Main from './containers/Main/Main';
+import SignIn from './containers/SignIn/SignIn';
 
 export const PATHS = {
 	MENU: '/',
@@ -13,5 +13,5 @@ export const PATHS = {
 
 export const routes = [
 	<Route exact path={PATHS.MENU} component={Main} key={PATHS.MENU}/>,
-	<Route exact path={PATHS.SIGN_IN} component={SignIn} key={PATHS.SIGN_IN}/>
+	<Route exact path={PATHS.SIGN_IN} component={SignIn} key={PATHS.SIGN_IN}/>,
 ];
