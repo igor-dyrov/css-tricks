@@ -3,9 +3,7 @@
   src: url(../../static/fonts/Sansation/Sansation_Regular.ttf) format('truetype');
 }
 
-.bannerBestService {
-  position: fixed;
-  top: 0;
+.banner-best-service {
   background: linear-gradient(
                   rgba(0, 0, 0, 0.5),
                   rgba(0, 0, 0, 0.5)
@@ -101,7 +99,7 @@
   }
 }
 
-.headerBestService {
+.header-best-service {
   display: grid;
   grid-row: 1/2;
   grid-column: 1/4;
