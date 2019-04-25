@@ -33,12 +33,12 @@ const BestService = () => (
 				<div className='bannerBestService__nav-button bannerBestService__nav-button_position_right'/>
 			</div>
 			<div className='bannerBestService__description'>
-				<h1 className='bannerBestService__service-text'>The Best Services</h1>
-				<h2 className='bannerBestService__description-text'>
+				<div className='bannerBestService__service-text'>The Best Services</div>
+				<div className='bannerBestService__description-text'>
 					We provide the best services in the world
 					We provide the best services in the world
 					We provide the best services in the world
-				</h2>
+				</div>
 				<div className='bannerBestService__button'>Hire us</div>
 			</div>
 		</div>
