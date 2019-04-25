@@ -9,9 +9,59 @@
     grid-row: 1/2;
     grid-column: 1/2;
     background-image: url(../../static/img/BestService/write.png);
-    //background-position-x: -10vw;
-    //background-position-y: -5vh;
-    background-size: auto;
+    background-size: cover;
+  }
+
+  &__content {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+  }
+
+  &__label {
+    padding-top: 10vh;
+    padding-left: 80px;
+    font-family: Sansation;
+    font-size: 46px;
+    text-transform: uppercase;
+    color: #252525;
+    text-align: left;
+  }
+
+  &__text {
+    padding-left: 80px;
+    color: #252525;
+    font-size: 22px;
+    padding-bottom: 5vh;
+    padding-right: 6.5vw;
+  }
+
+  &__separator {
+    padding-bottom: 6vh;
+    background-image: url(../../static/img/BestService/separator.png);
     background-repeat: no-repeat;
+    width: 100%;
+    height: 37px;
+    background-size: auto;
+  }
+
+  &__button {
+    margin-left: 80px;
+    margin-top: 3.5vh;
+    cursor: pointer;
+    background-color: #05a0af;
+    color: white;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    width: 16vw;
+    text-align: center;
+    font-size: 18px;
+
+    &:hover {
+      background-color: #536183;
+    }
   }
 }

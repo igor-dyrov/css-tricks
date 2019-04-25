@@ -15,7 +15,7 @@ const BestService = () => (
 				<div className='header-best-service__menu'>
 					<div className='header-best-service__link'>Home</div>
 					<div className='header-best-service__link'>About</div>
-					<div className='header-best-service__link headerBestService__link_active'>Services</div>
+					<div className='header-best-service__link header-best-service__link_active'>Services</div>
 					<div className='header-best-service__link'>Portfolio</div>
 					<div className='header-best-service__link'>Shop</div>
 					<div className='header-best-service__link'>Contacts</div>
@@ -45,7 +45,24 @@ const BestService = () => (
 		</div>
 		<div className='about-best-service'>
 			<div className='about-best-service__image'/>
-			<div className='about-best-service__content'/>
+			<div className='about-best-service__content'>
+				<div className='about-best-service__label'>A little about us</div>
+				<div className='about-best-service__separator'/>
+				{/*<img src='../../static/img/BestService/separator.png'/>*/}
+				<div className='about-best-service__text'>
+					We are  a company based in india with the motto “Digitalally
+					Designed India”. We are  a company based in india with the motto
+					“Digitalally  Designed India”. We are  a company based in india
+					with the motto “Digitalally  Designed India”.
+				</div>
+				<div className='about-best-service__text'>
+					We are  a company based in india with the motto “Digitalally
+					Designed India”. We are  a company based in india with the motto
+					“Digitalally  Designed India”. We are  a company based in india
+					with the motto “Digitalally  Designed India”.
+				</div>
+				<div className='about-best-service__button'>READ MORE DETAILS</div>
+			</div>
 		</div>
 	</React.Fragment>
 );
