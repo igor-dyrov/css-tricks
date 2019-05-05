@@ -72,7 +72,7 @@ const BestService = () => (
 			</div>
 			<div className='services-best-service__content'>
 				<div className='services-best-service__service'>
-					<img src='../../static/img/BestService/service.png' className='services-best-service__service-image'/>
+					<img src='../../static/img/BestService/serv.png' className='services-best-service__service-image'/>
 					<div className='services-best-service__service-label'>web development</div>
 					<div className='services-best-service__service-description'>
 						We provide the best world class web
@@ -82,7 +82,7 @@ const BestService = () => (
 					<div className='services-best-service__button'>more details</div>
 				</div>
 				<div className='services-best-service__service services-best-service__service_active'>
-					<img src='../../static/img/BestService/service.png' className='services-best-service__service-image'/>
+					<img src='../../static/img/BestService/serv.png' className='services-best-service__service-image'/>
 					<div className='services-best-service__service-label'>web development</div>
 					<div className='services-best-service__service-description'>
 						We provide the best world class web
@@ -92,7 +92,7 @@ const BestService = () => (
 					<div className='services-best-service__button'>more details</div>
 				</div>
 				<div className='services-best-service__service'>
-					<img src='../../static/img/BestService/service.png' className='services-best-service__service-image'/>
+					<img src='../../static/img/BestService/serv.png' className='services-best-service__service-image'/>
 					<div className='services-best-service__service-label'>web development</div>
 					<div className='services-best-service__service-description'>
 						We provide the best world class web
