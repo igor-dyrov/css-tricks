@@ -3,6 +3,7 @@ import * as React from 'react';
 import './Header.scss';
 import './About.scss';
 import './Services.scss';
+import './Feedback.scss';
 
 // tslint:disable:variable-name
 
@@ -50,25 +51,25 @@ const BestService = () => (
 				<div className='about-best-service__label'>A little about us</div>
 				<div className='about-best-service__separator'/>
 				<div className='about-best-service__text'>
-					We are  a company based in india with the motto “Digitalally
-					Designed India”. We are  a company based in india with the motto
-					“Digitalally  Designed India”. We are  a company based in india
-					with the motto “Digitalally  Designed India”.
+					We are a company based in india with the motto “Digitalally
+					Designed India”. We are a company based in india with the motto
+					“Digitalally Designed India”. We are a company based in india
+					with the motto “Digitalally Designed India”.
 				</div>
 				<div className='about-best-service__text'>
-					We are  a company based in india with the motto “Digitalally
-					Designed India”. We are  a company based in india with the motto
-					“Digitalally  Designed India”. We are  a company based in india
-					with the motto “Digitalally  Designed India”.
+					We are a company based in india with the motto “Digitalally
+					Designed India”. We are a company based in india with the motto
+					“Digitalally Designed India”. We are a company based in india
+					with the motto “Digitalally Designed India”.
 				</div>
 				<div className='about-best-service__button'>READ MORE DETAILS</div>
 			</div>
 		</div>
 		<div className='services-best-service'>
 			<div className='services-best-service__logo'>
-				<div className='services-best-service__separator services-best-service__separator_position_left'/>
+				<div className='best-service__separator best-service__separator_position_left'/>
 				<div className='services-best-service__label'>Our Services</div>
-				<div className='services-best-service__separator services-best-service__separator_position_right'/>
+				<div className='best-service__separator best-service__separator_position_right'/>
 			</div>
 			<div className='services-best-service__content'>
 				<div className='services-best-service__service'>
@@ -101,6 +102,13 @@ const BestService = () => (
 					</div>
 					<div className='services-best-service__button'>more details</div>
 				</div>
+			</div>
+		</div>
+		<div className='feedback-best-service'>
+			<div className='feedback-best-service__logo'>
+				<div className='best-service__separator best-service__separator_position_left'/>
+				<div className='feedback-best-service__label'>Feedback</div>
+				<div className='best-service__separator best-service__separator_position_right'/>
 			</div>
 		</div>
 	</React.Fragment>

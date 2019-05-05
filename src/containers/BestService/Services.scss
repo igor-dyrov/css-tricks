@@ -1,3 +1,18 @@
+.best-service {
+  &__separator {
+    margin-top: 5vh;
+    height: 0.7vh;
+    width: 30vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../../static/img/BestService/service-left-separator.png);
+
+    &_position_right {
+      transform: rotate(180deg);
+    }
+  }
+}
+
 .services-best-service {
   width: 100%;
   height: 123vh;
@@ -17,23 +32,11 @@
   &__label {
     color: white;
     text-transform: uppercase;
+    text-align: center;
     font-family: Sansation;
     font-size: 78px;
     padding-left: 1vw;
     padding-right: 1vw;
-  }
-
-  &__separator {
-    margin-top: 5vh;
-    height: 0.7vh;
-    width: 30vw;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url(../../static/img/BestService/service-left-separator.png);
-
-    &_position_right {
-      transform: rotate(180deg);
-    }
   }
 
   &__content {
