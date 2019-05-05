@@ -4,7 +4,7 @@
   background-color: #3d3d3d;
   display: grid;
   grid-template-rows: 0.32fr 0.68fr;
-  grid-template-columns: 0.4fr 0.6fr;
+  grid-template-columns: 0.35fr 0.6fr;
 
   &__logo {
     grid-row: 1/2;
@@ -52,6 +52,37 @@
 
   &__review-text {
     padding-bottom: 2vh;
+  }
+
+  &__persons {
+    grid-column: 2/4;
+    grid-row: 2/3;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5vh;
+    padding-bottom: 6vh;
+  }
+
+  &__person {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 20vw;
+    margin-right: 2vw;
+
+    &_number {
+      &_1 {
+        background-image: url(../../static/img/BestService/feedback-photo1.png);
+      }
+
+      &_2 {
+        background-image: url(../../static/img/BestService/feedback-photo2.png);
+      }
+
+      &_3 {
+        background-image: url(../../static/img/BestService/feedback-photo3.png);
+      }
+    }
   }
 }
 

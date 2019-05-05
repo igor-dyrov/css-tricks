@@ -123,6 +123,11 @@ const BestService = () => (
 					<div className='feedback-pagination__switcher'/>
 				</div>
 			</div>
+			<div className='feedback-best-service__persons'>
+				<div className='feedback-best-service__person feedback-best-service__person_number_1'/>
+				<div className='feedback-best-service__person feedback-best-service__person_number_2'/>
+				<div className='feedback-best-service__person feedback-best-service__person_number_3'/>
+			</div>
 		</div>
 	</React.Fragment>
 );
