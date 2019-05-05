@@ -110,6 +110,19 @@ const BestService = () => (
 				<div className='feedback-best-service__label'>Feedback</div>
 				<div className='best-service__separator best-service__separator_position_right'/>
 			</div>
+			<div className='feedback-best-service__reviews'>
+				<div className='feedback-best-service__review-text'>
+					It was always a pleasure
+					doing bussiness with them.
+					I love the quality of work.
+				</div>
+				<div className='feedback-best-service__separator'/>
+				<div className='feedback-pagination'>
+					<div className='feedback-pagination__switcher feedback-pagination__switcher_position_left'/>
+					<div className='feedback-pagination__label'>1/10</div>
+					<div className='feedback-pagination__switcher'/>
+				</div>
+			</div>
 		</div>
 	</React.Fragment>
 );
