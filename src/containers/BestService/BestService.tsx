@@ -5,6 +5,7 @@ import './About.scss';
 import './Services.scss';
 import './Feedback.scss';
 import './Clients.scss';
+import './Query.scss';
 
 // tslint:disable:variable-name
 
@@ -169,6 +170,20 @@ const BestService = () => (
 				<div className='clients-best-service__company6'/>
 				<div className='clients-best-service__company7'/>
 				<div className='clients-best-service__company8'/>
+			</div>
+		</div>
+		<div className='query-best-service'>
+			<div className='query-best-service__info'>
+				<div className='query-best-service__label'>Any Queries | Get a quote</div>
+				<div className='query-best-service__description'>
+					If you have any questions or queries regarding our service or pricing don’t worry.
+					Our experts will call you.
+				</div>
+			</div>
+			<div className='query-best-service__form'>
+				<input className='query-best-service__input' placeholder='Your name'/>
+				<input className='query-best-service__input' placeholder='Your number'/>
+				<div className='query-best-service__submit-button'>Get a call</div>
 			</div>
 		</div>
 	</React.Fragment>
