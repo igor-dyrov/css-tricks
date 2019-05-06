@@ -10,6 +10,10 @@
     &_position_right {
       transform: rotate(180deg);
     }
+
+    &_color_grey {
+      filter: invert(50%);
+    }
   }
 }
 

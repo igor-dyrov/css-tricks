@@ -4,6 +4,7 @@ import './Header.scss';
 import './About.scss';
 import './Services.scss';
 import './Feedback.scss';
+import './Clients.scss';
 
 // tslint:disable:variable-name
 
@@ -151,6 +152,23 @@ const BestService = () => (
 						<div>CEO, Vesso</div>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div className='clients-best-service'>
+			<div className='clients-best-service__logo'>
+				<div className='best-service__separator best-service__separator_color_grey best-service__separator_position_left'/>
+				<div className='clients-best-service__label'>Clients</div>
+				<div className='best-service__separator best-service__separator_color_grey best-service__separator_position_right'/>
+			</div>
+			<div className='clients-best-service__companies'>
+				<div className='clients-best-service__company1'/>
+				<div className='clients-best-service__company2'/>
+				<div className='clients-best-service__company3'/>
+				<div className='clients-best-service__company4'/>
+				<div className='clients-best-service__company5'/>
+				<div className='clients-best-service__company6'/>
+				<div className='clients-best-service__company7'/>
+				<div className='clients-best-service__company8'/>
 			</div>
 		</div>
 	</React.Fragment>
