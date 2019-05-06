@@ -119,14 +119,38 @@ const BestService = () => (
 				<div className='feedback-best-service__separator'/>
 				<div className='feedback-pagination'>
 					<div className='feedback-pagination__switcher feedback-pagination__switcher_position_left'/>
-					<div className='feedback-pagination__label'>1/10</div>
+					<div className='feedback-pagination__label'>1 / 10</div>
 					<div className='feedback-pagination__switcher'/>
 				</div>
 			</div>
 			<div className='feedback-best-service__persons'>
-				<div className='feedback-best-service__person feedback-best-service__person_number_1'/>
-				<div className='feedback-best-service__person feedback-best-service__person_number_2'/>
-				<div className='feedback-best-service__person feedback-best-service__person_number_3'/>
+				<div className='feedback-best-service__person feedback-best-service__person_number_1'>
+					<div className='feedback-best-service__review-date'>
+						<div>01</div>
+					</div>
+					<div className='feedback-best-service__review-author'>
+						<div>Imran Khan</div>
+						<div>CEO, Vesso</div>
+					</div>
+				</div>
+				<div className='feedback-best-service__person feedback-best-service__person_number_2'>
+					<div className='feedback-best-service__review-date'>
+						<div>01</div>
+					</div>
+					<div className='feedback-best-service__review-author'>
+						<div>Imran Khan</div>
+						<div>CEO, Vesso</div>
+					</div>
+				</div>
+				<div className='feedback-best-service__person feedback-best-service__person_number_3'>
+					<div className='feedback-best-service__review-date'>
+						<div>01</div>
+					</div>
+					<div className='feedback-best-service__review-author'>
+						<div>Imran Khan</div>
+						<div>CEO, Vesso</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</React.Fragment>
