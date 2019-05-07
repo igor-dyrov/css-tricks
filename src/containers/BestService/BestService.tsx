@@ -213,11 +213,11 @@ const BestService = () => (
 			</div>
 			<div className='footer-best-service__subscribe'>
 				<div className='footer-best-service__subscribe-form'>
-					<input className='footer-best-service__subscribe-input'/>
+					<input className='footer-best-service__subscribe-input' placeholder='Your email'/>
 					<div className='footer-best-service__subscribe-button'>Subscribe</div>
 				</div>
 				<div className='footer-best-service__social'>
-				
+					<div className='footer-best-service__social-img'/>
 				</div>
 			</div>
 		</div>
