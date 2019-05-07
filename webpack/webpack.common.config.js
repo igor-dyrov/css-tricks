@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const sourcePath = path.join(__dirname, '../src/');
+const nodeExternals = require('webpack-node-externals');
 const extractCSS = new ExtractTextPlugin('styles.min.css');
 
 module.exports = {
@@ -27,6 +28,7 @@ module.exports = {
 			// },
 			{
 				test: /\.tsx?$/,
+				exclude: /(react-native)/,
 				use: [
 					"babel-loader",
 					"react-hot-loader/webpack",
@@ -35,6 +37,7 @@ module.exports = {
 			},
 			{
 				enforce: "pre", test: /\.(ts|tsx)$/,
+				exclude: /(react-native)/,
 				loader: "tslint-loader"
 			},
 			{
@@ -43,6 +46,7 @@ module.exports = {
 					fallback: 'style-loader',
 					use: [
 						'css-loader',
+						'resolve-url-loader',
 						'sass-loader',
 						'postcss-loader',
 					]
@@ -57,6 +61,10 @@ module.exports = {
 						'postcss-loader'
 					]
 				})
+			},
+			{
+				test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+				loader: 'url-loader?limit=100000'
 			}
 		]
 	},
