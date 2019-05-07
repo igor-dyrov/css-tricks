@@ -190,14 +190,35 @@ const BestService = () => (
 		<div className='footer-best-service'>
 			<div className='footer-best-service__menu'>
 				<div className='footer-best-service__menu-column'>
-					<div>Product</div>
-					<div>Cost & Governance</div>
-					<div>Security & Complaince</div>
-					<div>Product N</div>
-					<div>Privacy & Plans</div>
+					<div className='footer-best-service__menu-element footer-best-service__menu-element_main'>Product</div>
+					<div className='footer-best-service__menu-element'>Cost & Governance</div>
+					<div className='footer-best-service__menu-element'>Security & Complaince</div>
+					<div className='footer-best-service__menu-element'>Product N</div>
+					<div className='footer-best-service__menu-element'>Privacy & Plans</div>
 				</div>
-				<div className='footer-best-service__menu-column'></div>
-				<div className='footer-best-service__menu-column'></div>
+				<div className='footer-best-service__menu-column '>
+					<div className='footer-best-service__menu-element footer-best-service__menu-element_main'>Learn</div>
+					<div className='footer-best-service__menu-element'>Articles</div>
+					<div className='footer-best-service__menu-element'>Register a demo</div>
+					<div className='footer-best-service__menu-element'>Webinars</div>
+					<div className='footer-best-service__menu-element'>FAQs</div>
+				</div>
+				<div className='footer-best-service__menu-column'>
+					<div className='footer-best-service__menu-element footer-best-service__menu-element_main'>Company</div>
+					<div className='footer-best-service__menu-element'>About</div>
+					<div className='footer-best-service__menu-element'>Careers</div>
+					<div className='footer-best-service__menu-element'>Partners</div>
+					<div className='footer-best-service__menu-element'>Contact</div>
+				</div>
+			</div>
+			<div className='footer-best-service__subscribe'>
+				<div className='footer-best-service__subscribe-form'>
+					<input className='footer-best-service__subscribe-input'/>
+					<div className='footer-best-service__subscribe-button'>Subscribe</div>
+				</div>
+				<div className='footer-best-service__social'>
+				
+				</div>
 			</div>
 		</div>
 	</React.Fragment>
