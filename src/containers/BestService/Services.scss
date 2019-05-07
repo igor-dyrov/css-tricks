@@ -58,6 +58,7 @@
     font-size: 24px;
     padding-top: 2.5vh;
     padding-bottom: 2.5vh;
+    margin-bottom: 20vh;
     text-align: center;
     cursor: pointer;
 
@@ -71,7 +72,7 @@
     background-color: #3d3d3d;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 
     &-label {
@@ -80,7 +81,7 @@
       font-weight: bold;
       color: white;
       text-transform: uppercase;
-      padding-bottom: 4vh;
+      padding-bottom: 5vh;
     }
 
     &-description {
@@ -89,7 +90,7 @@
       font-size: 28px;
       color: white;
       font-family: Sansation;
-      padding-bottom: 6vh;
+      padding-bottom: 5vh;
     }
 
     &-image {
@@ -99,6 +100,38 @@
 
     &_active {
       background-color: #097e89;
+    }
+  }
+
+  &__switcher {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__switch-button {
+    width: 3.6vw;
+    height: 100%;
+    background-color: #097e89;
+    margin-left: 2px;
+    cursor: pointer;
+    //background-size: contain;
+    background-position: top 8px left 20px;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    //padding-top: 20px;
+
+    &_direction {
+      &_left {
+        background-image: url(../../static/img/BestService/serv-switcher-left.png);
+      }
+
+      &_right {
+        background-image: url(../../static/img/BestService/serv-switcher-right.png);
+      }
     }
   }
 }
