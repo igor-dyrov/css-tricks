@@ -169,14 +169,14 @@ const BestService = () => (
 				<div className='best-service__separator best-service__separator_color_grey best-service__separator_position_right'/>
 			</div>
 			<div className='clients-best-service__companies'>
-				<div className='clients-best-service__company1'/>
-				<div className='clients-best-service__company2'/>
-				<div className='clients-best-service__company3'/>
-				<div className='clients-best-service__company4'/>
-				<div className='clients-best-service__company5'/>
-				<div className='clients-best-service__company6'/>
-				<div className='clients-best-service__company7'/>
-				<div className='clients-best-service__company8'/>
+				<div className='clients-best-service__company clients-best-service__company_number_1'/>
+				<div className='clients-best-service__company clients-best-service__company_number_2'/>
+				<div className='clients-best-service__company clients-best-service__company_number_3'/>
+				<div className='clients-best-service__company clients-best-service__company_number_4'/>
+				<div className='clients-best-service__company clients-best-service__company_number_5'/>
+				<div className='clients-best-service__company clients-best-service__company_number_6'/>
+				<div className='clients-best-service__company clients-best-service__company_number_7'/>
+				<div className='clients-best-service__company clients-best-service__company_number_8'/>
 			</div>
 		</div>
 		<div className='query-best-service'>

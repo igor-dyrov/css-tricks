@@ -43,6 +43,10 @@
       &_position_right {
         background-image: url(../../static/img/BestService/arrow-right.png);
       }
+
+      &:hover {
+        filter: invert(1);
+      }
     }
   }
 
