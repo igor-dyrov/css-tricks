@@ -6,6 +6,7 @@ import './Services.scss';
 import './Feedback.scss';
 import './Clients.scss';
 import './Query.scss';
+import './Footer.scss';
 
 // tslint:disable:variable-name
 
@@ -184,6 +185,19 @@ const BestService = () => (
 				<input className='query-best-service__input' placeholder='Your name'/>
 				<input className='query-best-service__input' placeholder='Your number'/>
 				<div className='query-best-service__submit-button'>Get a call</div>
+			</div>
+		</div>
+		<div className='footer-best-service'>
+			<div className='footer-best-service__menu'>
+				<div className='footer-best-service__menu-column'>
+					<div>Product</div>
+					<div>Cost & Governance</div>
+					<div>Security & Complaince</div>
+					<div>Product N</div>
+					<div>Privacy & Plans</div>
+				</div>
+				<div className='footer-best-service__menu-column'></div>
+				<div className='footer-best-service__menu-column'></div>
 			</div>
 		</div>
 	</React.Fragment>
