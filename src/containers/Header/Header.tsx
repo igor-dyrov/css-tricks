@@ -6,10 +6,12 @@ import Button from '../../components/Button/Button';
 import NavigationButton from '../../components/NavigationButton/NavigationButton';
 import { PATHS } from '../../routes';
 import setAuthData from '../../redux/auth/auth.action';
+import { makeGetAuthStatus, makeGetUserName } from '../../redux/auth/auth.selector';
 import UserService from '../../services/UserService/UserService';
 
 import './Header.scss';
 import './Mobile.scss';
+import { IAppState } from '../../store';
 
 interface IProps {
 	userName?: string;
@@ -140,19 +142,22 @@ class Header extends React.Component<IProps, IState> {
 	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		isAuthorized: state.auth.isAuthorized,
-		userName: state.auth.userName,
-	};
+const makeMapStateToProps = () => {
+	const getAuthStatus = makeGetAuthStatus();
+	const getUserName = makeGetUserName();
+	
+	return ({auth}: IAppState) => {
+		return {
+			isAuthorized: getAuthStatus(auth),
+			userName: getUserName(auth),
+		}
+	}
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		setAuthInfo(data) {
-			dispatch(setAuthData(data));
-		},
+		setAuthInfo : (data) => dispatch(setAuthData(data)),
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(makeMapStateToProps(), mapDispatchToProps)(Header);
