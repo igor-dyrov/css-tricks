@@ -84,7 +84,7 @@ const BestService = () => (
 						class web development service
 					</div>
 					<div className='services-best-service__button'>more details</div>
-					<div className='services-best-service__switcher'></div>
+					<div className='services-best-service__switcher'/>
 				</div>
 				<div className='services-best-service__service services-best-service__service_active'>
 					<img src='../../static/img/BestService/serv.png' className='services-best-service__service-image'/>
@@ -95,7 +95,7 @@ const BestService = () => (
 						class web development service
 					</div>
 					<div className='services-best-service__button'>more details</div>
-					<div className='services-best-service__switcher'></div>
+					<div className='services-best-service__switcher'/>
 				</div>
 				<div className='services-best-service__service'>
 					<img src='../../static/img/BestService/serv.png' className='services-best-service__service-image'/>

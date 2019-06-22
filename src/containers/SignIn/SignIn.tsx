@@ -179,11 +179,9 @@ const mapStateToProps = () => {
 	return {};
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
 	return {
-		setAuthData(data) {
-			dispatch(setAuthInfo(data));
-		},
+		setAuthData: (data) => dispatch(setAuthInfo(data)),
 	};
 };
 
