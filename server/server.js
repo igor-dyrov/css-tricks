@@ -13,12 +13,66 @@ const MongoClient = require('mongodb').MongoClient;
 
 const url = "mongodb://localhost:27017";
 
+let cur = 0;
+
+const balances = {
+	0: 1000,
+	1: 0,
+};
+
 const RESPONSE_CODES = {
 	OK: 200,
 	FORBIDDEN: 403,
 	NOT_AUTHORIZED: 401,
 	CONFLICT: 409
 };
+
+app.use('/profile', express.static(__dirname));
+
+app.use('/cookie', (req, res) => {
+	res.set('Access-Control-Allow-Origin', '*');
+	res.set('Access-Control-Allow-Credentials', 'true');
+	
+	res.set('Set-Cookie', `session_id=${cur++}`);
+	
+	res.status(RESPONSE_CODES.OK);
+	res.end();
+});
+
+app.use('/transfer', (req, res) => {
+	res.set('Access-Control-Allow-Origin', '*');
+	res.set('Access-Control-Allow-Credentials', 'true');
+	
+	const from = req.query.from;
+	const to = req.query.to;
+	const amount = req.query.amount;
+	
+	const cookie = req.get('Cookie');
+	console.log(cookie);
+	const session = cookie && cookie.split('=')[1];
+	
+	if (session === from) {
+		balances[from] -= +amount;
+		balances[to] += +amount;
+		res.status(RESPONSE_CODES.OK);
+	} else {
+		res.status(RESPONSE_CODES.FORBIDDEN);
+	}
+
+	res.end();
+});
+
+app.use('/balance', (req, res) => {
+	res.set('Access-Control-Allow-Origin', '*');
+	res.set('Access-Control-Allow-Credentials', 'true');
+	
+	const cookie = req.get('Cookie');
+	console.log(cookie);
+	const session = cookie && cookie.split('=')[1];
+	res.json({ balance: balances[session] || 0 });
+	
+	res.status(RESPONSE_CODES.OK);
+});
 
 app.post('/api/register', cors(), (req, res) => {
 	res.set('Access-Control-Allow-Origin', '*');
@@ -47,7 +101,7 @@ app.post('/api/register', cors(), (req, res) => {
 					toInsert.login = req.body.login;
 					toInsert.password = req.body.password;
 					toInsert.sessionID = md5sum.digest('hex');
-					dbo.collection("sessions").insertOne(toInsert, (err, result) => {
+					dbo.collection("sessions").insertOne(toInsert, (err) => {
 						if (!err) {
 							res.set('Set-Cookie', `session_id=${toInsert.sessionID}`);
 							res.status(RESPONSE_CODES.OK);
@@ -135,7 +189,5 @@ app.use('/api/session', (req, res) => { //check auth
 		});
 	});
 });
-
-const router = express.Router();
 
 app.listen(8000, () => console.log('Server running on http://localhost:8000/'));

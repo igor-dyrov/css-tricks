@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/balance/favicon.jpg" type="image/png">
+    <title>Profile</title>
+    <style>
+        .balance {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <p class="balance">Баланс: </p>
+    <script>
+	    const fPar = {
+		    method: 'GET',
+		    mode: 'cors',
+		    headers: {
+			    Host: 'localhost',
+		    },
+		    credentials: 'same-origin',
+	    };
+        fetch('/balance', fPar)
+            .then((response) => {
+	            response.json()
+		            .then((data) => {
+		            	document.querySelector('.balance').innerHTML = `Баланс: ${data.balance || 0}`;
+		            });
+            });
+    </script>
+</body>
+</html>
