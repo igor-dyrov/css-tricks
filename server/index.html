@@ -2,17 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="/balance/favicon.jpg" type="image/png">
+    <link rel="icon" href="http://localhost:8000/profile/favicon.jpg" type="image/jpg">
     <title>Profile</title>
     <style>
         .balance {
             font-size: 50px;
         }
+
+        .button {
+            border: #0072bc 3px solid;
+            border-radius: 25px;
+            font-size: 40px;
+            width: 220px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .button:hover {
+            background-color: #0072bc;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <p class="balance">Баланс: </p>
+    <div class="button">Перевод</div>
     <script>
+        document.querySelector('.button').onclick = () => {
+	        document.location.href = 'http://bank.ru/transaction';
+        };
+
 	    const fPar = {
 		    method: 'GET',
 		    mode: 'cors',
@@ -21,11 +41,12 @@
 		    },
 		    credentials: 'same-origin',
 	    };
+
         fetch('/balance', fPar)
             .then((response) => {
 	            response.json()
 		            .then((data) => {
-		            	document.querySelector('.balance').innerHTML = `Баланс: ${data.balance || 0}`;
+		            	document.querySelector('.balance').innerHTML = `Баланс: ${data.balance || '0 :(((('}`;
 		            });
             });
     </script>

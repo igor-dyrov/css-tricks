@@ -13,12 +13,14 @@ const MongoClient = require('mongodb').MongoClient;
 
 const url = "mongodb://localhost:27017";
 
-let cur = 0;
+let cur = 0, tokenCur = 0;
 
 const balances = {
 	0: 1000,
-	1: 0,
+	1: 10,
 };
+
+const tokens = {};
 
 const RESPONSE_CODES = {
 	OK: 200,
@@ -33,26 +35,44 @@ app.use('/cookie', (req, res) => {
 	res.set('Access-Control-Allow-Origin', '*');
 	res.set('Access-Control-Allow-Credentials', 'true');
 	
-	res.set('Set-Cookie', `session_id=${cur++}`);
+	res.set('Set-Cookie', `session_id=${cur}; HttpOnly`);
+	cur++;
 	
 	res.status(RESPONSE_CODES.OK);
 	res.end();
+});
+
+app.use('/token', (req, res) => {
+	const cookie = req.get('Cookie');
+	const session = cookie && cookie.split('=')[1].substr(0, 1);
+	
+	if (!isNaN(balances[session])) {
+		res.status(RESPONSE_CODES.OK);
+		
+		const token = `${tokenCur}${tokenCur + 1}`;
+		tokens[session] = token;
+		
+		res.json({ token });
+		tokenCur += 2;
+	} else {
+		res.status(RESPONSE_CODES.FORBIDDEN);
+		res.end();
+	}
 });
 
 app.use('/transfer', (req, res) => {
 	res.set('Access-Control-Allow-Origin', '*');
 	res.set('Access-Control-Allow-Credentials', 'true');
 	
-	const from = req.query.from;
 	const to = req.query.to;
 	const amount = req.query.amount;
 	
 	const cookie = req.get('Cookie');
-	console.log(cookie);
-	const session = cookie && cookie.split('=')[1];
+	const session = cookie && cookie.split('=')[1].substr(0, 1);
+	console.log(session);
 	
-	if (session === from) {
-		balances[from] -= +amount;
+	if (balances[session] >= amount) {
+		balances[session] -= +amount;
 		balances[to] += +amount;
 		res.status(RESPONSE_CODES.OK);
 	} else {
@@ -62,13 +82,45 @@ app.use('/transfer', (req, res) => {
 	res.end();
 });
 
+app.use('/transaction', express.static(__dirname + '/transaction.html'));
+
+app.post('/safe', (req, res) => {
+	res.set('Access-Control-Allow-Origin', 'http://localhost:7000');
+	res.set('Access-Control-Allow-Credentials', 'true');
+	
+	const cookie = req.get('Cookie');
+	const session = cookie && cookie.split('=')[1].substr(0, 1);
+	const token = req.headers['x-csrf-token'];
+	
+	if (token && tokens[session] === token && !isNaN(balances[session]) && balances[0] >= req.body.amount) {
+		delete tokens[session];
+		
+		balances[0] -= +req.body.amount;
+		balances[1] += +req.body.amount;
+		res.status(RESPONSE_CODES.OK);
+	} else {
+		res.status(RESPONSE_CODES.FORBIDDEN);
+	}
+	
+	res.end();
+});
+
+app.options('/safe', (req, res) => {
+	res.status(RESPONSE_CODES.OK);
+	res.set('Access-Control-Allow-Origin', 'http://localhost:7000');
+	res.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
+	res.set('Access-Control-Allow-Headers', 'X-PINGOTHER, Content-Type, Cookie, X-CSRF-TOKEN');
+	res.set('Access-Control-Allow-Credentials', 'true');
+	res.end();
+});
+
 app.use('/balance', (req, res) => {
 	res.set('Access-Control-Allow-Origin', '*');
 	res.set('Access-Control-Allow-Credentials', 'true');
 	
 	const cookie = req.get('Cookie');
-	console.log(cookie);
-	const session = cookie && cookie.split('=')[1];
+	const session = cookie && cookie.split('=')[1].substr(0, 1);
+	console.log(session);
 	res.json({ balance: balances[session] || 0 });
 	
 	res.status(RESPONSE_CODES.OK);

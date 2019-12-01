@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .button {
+            margin-top: 50px;
+            border: #ff0500 3px solid;
+            border-radius: 25px;
+            font-size: 40px;
+            width: 240px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #ff0500;
+            color: white;
+        }
+
+        .status {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <p style="font-size: 54px">Сумма:</p>
+    <input style="width: 230px; font-size: 40px" type="text">
+    <div class="button">Перевести</div>
+    <p class="status"></p>
+    <script>
+        document.querySelector('.button').onclick = () => {
+            const amount = document.querySelector('input').value;
+
+            const fPar = {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    Host: 'bank.ru',
+                    'CONTENT-TYPE': 'application/json; charset=utf-8',
+                },
+                credentials: 'include',
+                body: JSON.stringify({ amount }),
+            };
+
+            fetch('http://bank.ru/safe', fPar)
+                .then((response) => {
+                    const label = document.querySelector('.status');
+
+                    if (response.status === 200) {
+                        label.innerHTML = 'Успех';
+                    } else {
+                        label.innerHTML = 'Что-то пошло не так';
+                    }
+
+                    setTimeout(() => label.innerHTML = '', 3000);
+                });
+        };
+    </script>
+</body>
+</html>
