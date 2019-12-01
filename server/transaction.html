@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction</title>
+    <style>
+        .button {
+            margin-top: 50px;
+            border: #0072bc 3px solid;
+            border-radius: 25px;
+            font-size: 40px;
+            width: 240px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0072bc;
+            color: white;
+        }
+
+        .status {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <p style="font-size: 54px">Сумма:</p>
+    <input style="width: 230px; font-size: 40px" type="text">
+    <div class="button">Перевести</div>
+    <p class="status"></p>
+    <script>
+        document.querySelector('.button').onclick = () => {
+        	const amount = document.querySelector('input').value;
+
+	        fetch('/token', { method: 'GET' })
+                .then((response) => response.json())
+                .then(({ token }) => {
+	                const fPar = {
+		                method: 'POST',
+		                headers: {
+			                'CONTENT-TYPE': 'application/json',
+                            'X-CSRF-TOKEN': token,
+		                },
+		                body: JSON.stringify({ amount }),
+	                };
+
+	                return fetch('/safe', fPar)
+                })
+		        .then((response) => {
+			        const label = document.querySelector('.status');
+
+			        if (response.status === 200) {
+				        label.innerHTML = 'Успех';
+			        } else {
+				        label.innerHTML = 'Что-то пошло не так';
+			        }
+
+			        setTimeout(() => label.innerHTML = '', 3000);
+		        });
+        };
+    </script>
+</body>
+</html>
