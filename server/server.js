@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 const MongoClient = require('mongodb').MongoClient;
 
-const url = "mongodb://localhost:27017";
+const url = 'mongodb://localhost:27017';
 
 let cur = 0, tokenCur = 0;
 
@@ -109,7 +109,7 @@ app.options('/safe', (req, res) => {
 	res.status(RESPONSE_CODES.OK);
 	res.set('Access-Control-Allow-Origin', 'http://localhost:7000');
 	res.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
-	res.set('Access-Control-Allow-Headers', 'X-PINGOTHER, Content-Type, Cookie, X-CSRF-TOKEN');
+	res.set('Access-Control-Allow-Headers', 'Content-Type, Cookie, X-CSRF-TOKEN');
 	res.set('Access-Control-Allow-Credentials', 'true');
 	res.end();
 });
@@ -141,8 +141,8 @@ app.post('/api/register', cors(), (req, res) => {
 		md5sum.update(req.body.login + req.body.password);
 		MongoClient.connect(url, (err, db) => {
 			if (err) throw err;
-			const dbo = db.db("authDB");
-			dbo.collection("sessions").findOne({login: req.body.login}, (err, result) => {
+			const dbo = db.db('authDB');
+			dbo.collection('sessions').findOne({login: req.body.login}, (err, result) => {
 				if (!err && result) {
 					res.status(RESPONSE_CODES.CONFLICT);
 					res.json({
@@ -153,7 +153,7 @@ app.post('/api/register', cors(), (req, res) => {
 					toInsert.login = req.body.login;
 					toInsert.password = req.body.password;
 					toInsert.sessionID = md5sum.digest('hex');
-					dbo.collection("sessions").insertOne(toInsert, (err) => {
+					dbo.collection('sessions').insertOne(toInsert, (err) => {
 						if (!err) {
 							res.set('Set-Cookie', `session_id=${toInsert.sessionID}`);
 							res.status(RESPONSE_CODES.OK);
@@ -197,8 +197,8 @@ app.post('/api/session', cors(), (req, res) => { //login
 		});
 	} else {
 		MongoClient.connect(url, (err, db) => {
-			const dbo = db.db("authDB");
-			dbo.collection("sessions").findOne({login: req.body.login, password: req.body.password}, (err, result) => {
+			const dbo = db.db('authDB');
+			dbo.collection('sessions').findOne({login: req.body.login, password: req.body.password}, (err, result) => {
 				if (!err && result) {
 					res.status(RESPONSE_CODES.OK);
 					res.set('Set-Cookie', `session_id=${result.sessionID}`);
@@ -226,8 +226,8 @@ app.use('/api/session', (req, res) => { //check auth
 	}
 	MongoClient.connect(url, (err, db) => {
 		if (err) throw err;
-		const dbo = db.db("authDB");
-		dbo.collection("sessions").findOne({sessionID: session}, (err, result) => {
+		const dbo = db.db('authDB');
+		dbo.collection('sessions').findOne({sessionID: session}, (err, result) => {
 			if (!err && result) {
 				res.status(RESPONSE_CODES.OK);
 				res.json(result);
