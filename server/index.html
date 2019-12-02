@@ -33,14 +33,7 @@
 	        document.location.href = 'http://bank.ru/transaction';
         };
 
-	    const fPar = {
-		    method: 'GET',
-		    mode: 'cors',
-		    headers: {
-			    Host: 'localhost',
-		    },
-		    credentials: 'same-origin',
-	    };
+	    const fPar = { method: 'GET' };
 
         fetch('/balance', fPar)
             .then((response) => {

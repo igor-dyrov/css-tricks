@@ -32,9 +32,6 @@ const RESPONSE_CODES = {
 app.use('/profile', express.static(__dirname));
 
 app.use('/cookie', (req, res) => {
-	res.set('Access-Control-Allow-Origin', '*');
-	res.set('Access-Control-Allow-Credentials', 'true');
-	
 	res.set('Set-Cookie', `session_id=${cur}; HttpOnly`);
 	cur++;
 	
@@ -49,7 +46,10 @@ app.use('/token', (req, res) => {
 	if (!isNaN(balances[session])) {
 		res.status(RESPONSE_CODES.OK);
 		
-		const token = `${tokenCur}${tokenCur + 1}`;
+		const md5sum = crypto.createHash('md5');
+		const authString = `${tokenCur}${tokenCur + 1}`;
+		md5sum.update(authString);
+		const token = md5sum.digest('hex');
 		tokens[session] = token;
 		
 		res.json({ token });
@@ -61,9 +61,6 @@ app.use('/token', (req, res) => {
 });
 
 app.use('/transfer', (req, res) => {
-	res.set('Access-Control-Allow-Origin', '*');
-	res.set('Access-Control-Allow-Credentials', 'true');
-	
 	const to = req.query.to;
 	const amount = req.query.amount;
 	
@@ -85,9 +82,6 @@ app.use('/transfer', (req, res) => {
 app.use('/transaction', express.static(__dirname + '/transaction.html'));
 
 app.post('/safe', (req, res) => {
-	res.set('Access-Control-Allow-Origin', 'http://localhost:7000');
-	res.set('Access-Control-Allow-Credentials', 'true');
-	
 	const cookie = req.get('Cookie');
 	const session = cookie && cookie.split('=')[1].substr(0, 1);
 	const token = req.headers['x-csrf-token'];
@@ -105,19 +99,7 @@ app.post('/safe', (req, res) => {
 	res.end();
 });
 
-app.options('/safe', (req, res) => {
-	res.status(RESPONSE_CODES.OK);
-	res.set('Access-Control-Allow-Origin', 'http://localhost:7000');
-	res.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
-	res.set('Access-Control-Allow-Headers', 'Content-Type, Cookie, X-CSRF-TOKEN');
-	res.set('Access-Control-Allow-Credentials', 'true');
-	res.end();
-});
-
 app.use('/balance', (req, res) => {
-	res.set('Access-Control-Allow-Origin', '*');
-	res.set('Access-Control-Allow-Credentials', 'true');
-	
 	const cookie = req.get('Cookie');
 	const session = cookie && cookie.split('=')[1].substr(0, 1);
 	console.log(session);
